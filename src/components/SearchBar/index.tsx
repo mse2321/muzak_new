@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useStateContext } from '../../context/state';
 
-const SearchBar = (props: any) => {
-    const { setSearchTerm, searchTerm } = useStateContext();
+const SearchBar = () => {
+    const { 
+        getArtist,
+        getAuth, 
+        getSongs,
+        getArtistDiscogs
+    } = useStateContext();
 
     const [currentSearch, changeCurrentSearch] = useState('');
     
@@ -12,8 +17,10 @@ const SearchBar = (props: any) => {
     }
 
     const submitSearch = () => {
-        //console.log(searchTerm);
-        return setSearchTerm ? setSearchTerm(currentSearch) : '';
+        //getAuth();
+        //getArtist(currentSearch);
+        //getSongs(currentSearch);
+        getArtistDiscogs(currentSearch);
     }
 
     return (

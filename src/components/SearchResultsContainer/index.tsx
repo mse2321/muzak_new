@@ -14,7 +14,7 @@ const SearchResultsContainer = (props: any) => {
 
     return (
         <section className="col-xs-12 col-md-8 searchContainer">
-            <SongList songs={songs ? songs : {}} />
+            <SongList songs={songs ? songs : []} />
 			<MultipleArtists />
 		</section>
     );

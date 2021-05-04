@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStateContext } from '../../context/state';
 
-const AudioPlayer = () => {
+const AudioPlayer = (props: any) => {
     const { currentSong } = useStateContext();
 
     const actionMessage = 'Back to results';
