@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useStateContext } from '../../context/state';
 
 const SearchBar = () => {
@@ -7,7 +7,11 @@ const SearchBar = () => {
         getAuth, 
         getSongs,
         getArtistDiscogs,
+        totalArtists
     } = useStateContext();
+
+    //const allArtists = useRef(totalArtists);
+    //const currentArtists = allArtists.current;
 
     const [currentSearch, changeCurrentSearch] = useState('');
     
@@ -19,6 +23,7 @@ const SearchBar = () => {
     const submitSearch = () => {
         getAuth()
         .then(getArtist(currentSearch))
+        //.then(currentArtists.length === 1 && getSongs())
         .then(getSongs())
         .then(getArtistDiscogs(currentSearch))
     }

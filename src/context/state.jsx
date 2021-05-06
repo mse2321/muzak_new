@@ -66,16 +66,19 @@ const StateProvider = ({ children }) => {
         + '&type=' 
         + apiItems.type;
 
-        if(token !== '') {
+        //if(token !== '') {
             try {
                 const response = await axios.get(apiParams, { headers });
-                setTotalArtists(response.data.artists);
-                totalArtists.length === 1 && setCurrentArtist(response.data.artists.items[0].id);
+                setTotalArtists(response.data.artists.items[0]);
+                console.log(response);
+                console.log(totalArtists);
+                //totalArtists.length === 1 && setCurrentArtist(response.data.artists.items[0].id);
+                setCurrentArtist(response.data.artists.items[0].id);
                 console.log(currentArtist);
             } catch (error) {
                 console.error(error);
             }
-        }
+        //}
     };
 
     const getSongs = async () => {
@@ -93,7 +96,7 @@ const StateProvider = ({ children }) => {
 
         const apiParams = url + currentArtist + '/top-tracks?market=US';
 
-        if(token !== '') {
+        //if(token !== '') {
             try {
                 const response = await axios.get(apiParams, { headers });
                 console.log(response.data.tracks);
@@ -101,9 +104,9 @@ const StateProvider = ({ children }) => {
             } catch (error) {
                 console.error(error);
             }
-        } else {
-            console.log('problem')
-        }
+        //} else {
+            //console.log('problem')
+        //}
     };
 
     // Discogs APIs
