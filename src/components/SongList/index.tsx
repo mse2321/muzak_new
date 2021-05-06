@@ -12,8 +12,8 @@ const SongList = (props: any) => {
                 <h2>{heading}</h2>
 				<ul>
                     {
-                        songs?.map((song: any) => {
-                            return <Song songData={song} />
+                        songs?.map((song: any, index: number) => {
+                            return <Song key={index} songData={song} />
                         })
                     }
 				</ul>

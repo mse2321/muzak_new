@@ -21,13 +21,13 @@ const AudioPlayer = (props: any) => {
     return (
         <div id="audioPlayer_wrap">
             <audio id="music" controls>
-                <source src={ currentSong?.url } type="audio/mpeg" />
+                <source src={ currentSong?.preview_url } type="audio/mpeg" />
             </audio>
             <div id="audioPlayer">
-                <img className="album_art" src={ currentSong?.albumImageSource } alt="" />
+                <img className="album_art" src={ currentSong?.album?.images[0]?.url } alt="" />
                 <div id="song_name_display">
                     <p>{ currentSong?.name }</p>
-                    <p className='album'>{ currentSong?.albumName }</p>
+                    <p className='album'>{ currentSong?.album?.name }</p>
                 </div>
                 <div id="controls_wrap">
                     <div id="audio_controls">

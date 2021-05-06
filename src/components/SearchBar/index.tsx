@@ -6,7 +6,7 @@ const SearchBar = () => {
         getArtist,
         getAuth, 
         getSongs,
-        getArtistDiscogs
+        getArtistDiscogs,
     } = useStateContext();
 
     const [currentSearch, changeCurrentSearch] = useState('');
@@ -17,10 +17,10 @@ const SearchBar = () => {
     }
 
     const submitSearch = () => {
-        //getAuth();
-        //getArtist(currentSearch);
-        //getSongs(currentSearch);
-        getArtistDiscogs(currentSearch);
+        getAuth()
+        .then(getArtist(currentSearch))
+        .then(getSongs())
+        .then(getArtistDiscogs(currentSearch))
     }
 
     return (
