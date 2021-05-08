@@ -1,11 +1,11 @@
 #album_player_section { 
-    padding-left: 150px; 
+    padding-left: $base-unit * 15; 
     display: none;
 }
 
 #artist_info { 
     position: absolute; 
     text-align: center; 
-    height: 900px; 
+    height: $base-unit * 90; 
     width: 80%;
 }

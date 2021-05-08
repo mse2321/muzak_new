@@ -1,24 +1,28 @@
 import React from 'react';
 import { useStateContext } from '../../context/state';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { Row, Col } from 'react-bootstrap';
 
 const Song = (props: any) => {
     const { songData } = props;
-    const { setCurrentSong } = useStateContext();
+    const { setCurrentSong, setTogglePlayer } = useStateContext();
 
     const playSongs = () => {
+        setTogglePlayer(true);
         // sends the songData to the AudioPlayer component to play
         return setCurrentSong ? setCurrentSong(songData) : '';
     }
 
     return (
-        <li className="tracks">
-            <div>{songData?.name}</div>
-            <div>
+        <Row as={'li'} className="tracks">
+            <Col xl={11} >{songData?.name}</Col>
+            <Col className="d-flex flex-row-reverse">
                 <button onClick={playSongs} id="play_buttons">
-                    <i className='fa fa-play-circle'></i>
+                    <FontAwesomeIcon icon={faPlayCircle} />
                 </button>
-            </div>
-        </li>
+            </Col>
+        </Row>
     );
 }
 

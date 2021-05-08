@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useRef } from "react";
 import axios from 'axios';
 import * as secrets from '../secrets.json';
+import _ from 'lodash';
 
 const StateContext = createContext();
 
@@ -20,6 +21,9 @@ const StateProvider = ({ children }) => {
 
     const [token, setToken] = useState('');
 
+    const [togglePlayer, setTogglePlayer] = useState(false);
+    const [toggleSearchResults, setToggleSearchResults] = useState(false);
+
     // Spotify APIs
     const getAuth = async () => {
         const auth = 'Basic ' + secrets.spotify.secret;
@@ -36,7 +40,6 @@ const StateProvider = ({ children }) => {
 
         try {
             const response = await axios.post(url, body, { headers });
-            console.log(response.data.access_token);
             setToken(response.data.access_token);
         } catch (error) {
             console.error(error);
@@ -66,19 +69,18 @@ const StateProvider = ({ children }) => {
         + '&type=' 
         + apiItems.type;
 
-        //if(token !== '') {
+        if(!_.isEmpty(token)) {
             try {
                 const response = await axios.get(apiParams, { headers });
                 setTotalArtists(response.data.artists.items[0]);
-                console.log(response);
-                console.log(totalArtists);
                 //totalArtists.length === 1 && setCurrentArtist(response.data.artists.items[0].id);
                 setCurrentArtist(response.data.artists.items[0].id);
-                console.log(currentArtist);
             } catch (error) {
                 console.error(error);
             }
-        //}
+        } else {
+            console.log('problem with token for search');
+        }
     };
 
     const getSongs = async () => {
@@ -96,7 +98,7 @@ const StateProvider = ({ children }) => {
 
         const apiParams = url + currentArtist + '/top-tracks?market=US';
 
-        //if(token !== '') {
+        if(!_.isEmpty(token) && currentArtist !== 'none') {
             try {
                 const response = await axios.get(apiParams, { headers });
                 console.log(response.data.tracks);
@@ -104,9 +106,9 @@ const StateProvider = ({ children }) => {
             } catch (error) {
                 console.error(error);
             }
-        //} else {
-            //console.log('problem')
-        //}
+        } else {
+            console.log('problem with token for songs')
+        }
     };
 
     // Discogs APIs
@@ -147,11 +149,15 @@ const StateProvider = ({ children }) => {
         artistDetails,
         currentSong,
         totalArtists,
+        togglePlayer,
+        toggleSearchResults,
         getAuth,
         getArtist,
         getSongs,
         getArtistDiscogs,
-        setCurrentSong
+        setCurrentSong,
+        setTogglePlayer,
+        setToggleSearchResults
     };
 
     return (

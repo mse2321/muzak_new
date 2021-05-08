@@ -6,54 +6,67 @@ audio {
 	color: white; 
 	position: fixed; 
 	right: 0; 
-	bottom: 40px; 
+	bottom: $base-unit * 4; 
 	top: 0; 
-	padding: 70px 40px 40px 40px; 
+	padding: $base-unit * 7 $base-unit * 4 $base-unit * 4 $base-unit * 4; 
 	z-index: 5000; 
 	transition: 1s;
 }
 #artist_info h3 { 
-	font-size: 30px; 
+	font-size: $base-font-unit * 3; 
 	font-weight: bold; 
 }
 #artist_info img { 
-	margin: 30px 0 20px 0; 
-	border-radius: 150px; 
+	margin: $base-unit * 3 0 $base-unit * 2 0; 
+	border-radius: 100%; 
 }
 #artist_info p { 
-	margin-bottom: 30px; 
+	margin-bottom: $base-unit * 3; 
 }
 #artist_info li { 
-	margin: 10px 0; 
+	margin: $base-unit 0; 
 }
 #artist_info a:hover { 
 	color: white; 
 }
 .album { 
 	color: #26C6DA; 
-	font-size: 16px; 
+	font-size: $base-font-unit * 1.6; 
 }
-.tracks:hover { 
-	background-color: #8E24AA; 
-} 
 
-#audioPlayer_wrap { 
-	margin: 0 auto 1em auto; 
-	text-align: center; 
+.audioPlayer_container {
+	padding: $base-unit * 12 $base-unit * 10;
 }
+
 #audioPlayer { 
 	background-color: #777; 
 	border: 5px solid #ccc; 
 	color: white; 
-	border-radius: 15px; 
-	width: 22.2em; 
-	line-height: 2em;
+	border-radius: $base-unit * 1.5; 
+	width: 100%; 
+	line-height: $base-unit * 2;
 	transition: 1s;
-	display: none;
+	margin: 0 auto;
+	text-align: center; 
+	//display: none;
 }
 .album_art { 
-	height: 300px; 
-	width: 300px; 
+	height: 100%; 
+	width: 100%; 
 	background-color: #8E24AA; 
-	border-radius: 10px 10px 0 0; 
+	border-radius: $base-unit $base-unit 0 0; 
+}
+
+#audio_controls {
+	font-size: $base-font-unit * 2;
+
+	svg {
+		margin-right: $base-unit * 1.5;
+		color: $action;
+		cursor: pointer;
+
+		:hover {
+			color: $primary;
+		}
+	}
 }

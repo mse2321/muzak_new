@@ -2,16 +2,16 @@ import React from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
 
-const Container = (props: any) => {
+const ContentContainer = (props: any) => {
     const { children } = props;
 
     return (
-        <div className="container col-xs-12" id="content_wrap">
+        <React.Fragment>
             <Header />
             { children }
             <Footer />
-        </div>
+        </React.Fragment>
     )
 }
 
-export default Container;
+export default ContentContainer;
