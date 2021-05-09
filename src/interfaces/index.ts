@@ -31,7 +31,7 @@ export interface CurrentSong {
 
 export interface IDefaultContext {
     searchTerm?: string,
-    songs?: Array<Song>,
+    songs?: Array<CurrentSong>,
     totalArtists?: Array<Artist> | [],
     artistDetails?: ArtistDetails,
     currentSong?: CurrentSong,

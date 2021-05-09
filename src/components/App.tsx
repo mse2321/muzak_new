@@ -18,7 +18,7 @@ const App = () => {
                                 <SearchResultsContainer />
                             </ContentContainer>
                         </Col>
-                        <Col className="sidebar_container" xs={12}>
+                        <Col className="sidebar_container" xs={12} xl={5}>
                             <Sidebar />
                         </Col>
                     </Row>
