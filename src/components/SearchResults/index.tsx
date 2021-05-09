@@ -2,10 +2,9 @@ import React from 'react';
 import { useStateContext } from '../../context/state';
 import _ from 'lodash';
 
-const MultipleArtists = () => {
+const SearchResults = () => {
     const { 
         totalArtists,
-        getAuth,
         getSongs,
         getArtistDiscogs,
         setToggleMultipleSearchView,
@@ -14,8 +13,7 @@ const MultipleArtists = () => {
     } = useStateContext();
 
     const reSubmitSearch = (artistName: string, artistId: string) => {
-        getAuth()
-        .then(getSongs(artistId))
+        getSongs(artistId)
         .then(getArtistDiscogs(artistName))
 
         !_.isEmpty(songs) && setToggleSearchResults(true);
@@ -23,8 +21,8 @@ const MultipleArtists = () => {
     }
 
     return (
-		<div id="multi_results">
-            <h2>Multiple Results</h2>
+		<div id="search_results">
+            <h2>Search Results</h2>
             <p>Please choose an option from the following:</p>
             <ul>
                 {
@@ -39,4 +37,4 @@ const MultipleArtists = () => {
     );
 }
 
-export default MultipleArtists;
+export default SearchResults;

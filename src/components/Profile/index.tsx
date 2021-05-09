@@ -6,13 +6,19 @@ import _ from 'lodash';
 const Profile = () => {
 	const { 
 		artistDetails,
-		setToggleProfile 
+		setToggleProfile,
+		setToggleSidebar
 	} = useStateContext();
+
+	const toggleHandler = () => {
+		setToggleSidebar(false);
+		setToggleProfile(false);
+	}
 
     return (
 		<div id="artist_info">
 			<div className="close">
-				<Button onClick={() => setToggleProfile(false)}>X</Button>
+				<Button onClick={() => toggleHandler()}>X</Button>
 			</div>
 			<div className="content">
 				{

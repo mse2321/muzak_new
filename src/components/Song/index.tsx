@@ -7,9 +7,14 @@ import _ from 'lodash';
 
 const Song = (props: any) => {
     const { songData } = props;
-    const { setCurrentSong, setTogglePlayer } = useStateContext();
+    const { 
+        setCurrentSong, 
+        setTogglePlayer,
+        setToggleSidebar 
+    } = useStateContext();
 
     const playSongs = () => {
+        setToggleSidebar(true);
         setTogglePlayer(true);
         // sends the songData to the AudioPlayer component to play
         _.isEmpty(setCurrentSong) && setCurrentSong(songData);
@@ -17,7 +22,7 @@ const Song = (props: any) => {
 
     return (
         <Row as={'li'} className="tracks">
-            <Col xl={11} >{songData?.name}</Col>
+            <Col xs={8} xl={11} >{songData?.name}</Col>
             <Col className="d-flex flex-row-reverse">
                 <button onClick={playSongs} id="play_buttons">
                     <FontAwesomeIcon icon={faPlayCircle} />

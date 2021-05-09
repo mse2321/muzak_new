@@ -62,13 +62,12 @@
 		color: $action;
 		cursor: pointer;
 
-		:hover,
-		:active {
-			color: $primary;
-		}
+		:hover { color: $primary; }
+
 	}
+
+	.active_player_button { color: $primary; }
 }
 
-audio {
-	display: none;
-}
+// hides default player
+audio { display: none; }

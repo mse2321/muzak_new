@@ -5,41 +5,50 @@ export interface Song {
     artistName: string
 }
 
-export interface CurrentArtistDiscogs {
+export interface Artist {
     name: string
 }
 
 export interface ArtistDetails {
-    images: Array<any>,
-    url: string,
-    name: string
+    images?: Array<any>,
+    url?: string,
+    name?: string,
+    profile?: string,
+    uri?: string
 }
 
 export interface CurrentSong {
-    url: string,
-    albumImageSource: string,
-    albumName: string,
-    name: string
+    preview_url?: string,
+    albumImageSource?: string,
+    album?: {
+        images: Array<{
+            url: string
+        }>,
+        name: string
+    },
+    name?: string,
 }
 
-export interface CurrentArtist {
-    url: string,
-    albumImageSource: string,
-    albumName: string,
-    name: string
-}
-
-export interface DefaultContext {
+export interface IDefaultContext {
     searchTerm?: string,
-    currentArtist?: CurrentArtist,
     songs?: Array<Song>,
-    currentArtistDiscogs?: CurrentArtistDiscogs,
+    totalArtists?: Array<Artist> | [],
     artistDetails?: ArtistDetails,
     currentSong?: CurrentSong,
-    setSearchTerm?: Function,
-    getArtist?: Function,
-    getSongs?: Function,
-    getArtistDiscogs?: Function,
-    getArtistDetails?: Function,
-    setCurrentSong?: Function,
+    getAuth: Function,
+    getArtist: Function,
+    getSongs: Function,
+    getArtistDiscogs: Function,
+    setTogglePlayer: Function,
+    setToggleSearchResults: Function,
+    setToggleProfile: Function,
+    setToggleMultipleSearchView: Function,
+    setTotalArtists: Function,
+    setToggleSidebar: Function,
+    setCurrentSong: Function,
+    togglePlayer: boolean,
+    toggleSearchResults: boolean,
+    toggleProfile: boolean,
+    toggleMultipleSearchView: boolean,
+    toggleSidebar: boolean
 }

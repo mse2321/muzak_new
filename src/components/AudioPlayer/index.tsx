@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../../context/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
@@ -6,28 +6,34 @@ import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 const AudioPlayer = () => {
     const { 
         currentSong,
-        setTogglePlayer 
+        setTogglePlayer,
+        setToggleSidebar 
     } = useStateContext();
 
     const player = document.getElementById('music');
 
+    const [activeButton, setActiveButton] = useState<string>('');
+
     useEffect(() => {
-        player?.setAttribute('src', currentSong?.preview_url)
+        player?.setAttribute('src', (currentSong?.preview_url as string));
     }, [player, currentSong]);
 
     const actionMessage = 'Back to results';
 
-    const replaySong = () => {
-        (player as HTMLAudioElement).play();
-    };
+    const replaySong = (buttonPressed: string) => {
+        setActiveButton(buttonPressed);
+        (player as HTMLAudioElement)?.play();
+    }
 
-    const pauseSong = () => {
-        (player as HTMLAudioElement).pause();
-    };
+    const pauseSong = (buttonPressed: string) => {
+        setActiveButton(buttonPressed);
+        (player as HTMLAudioElement)?.pause();
+    }
     
     const hidePlayer = () => {
+        setToggleSidebar(false);
         setTogglePlayer(false);
-    };
+    }
 
     return (
         <div className={"audioPlayer_container"}>
@@ -40,8 +46,16 @@ const AudioPlayer = () => {
                 </div>
                 <div id="controls_wrap">
                     <div id="audio_controls">
-                        <FontAwesomeIcon icon={faPlay} onClick={replaySong} />
-                        <FontAwesomeIcon icon={faPause} onClick={pauseSong} />
+                        <FontAwesomeIcon 
+                            icon={faPlay} 
+                            id="play" 
+                            className={activeButton === 'play' ? 'active_player_button' : ''} 
+                            onClick={() => replaySong('play')} />
+                        <FontAwesomeIcon 
+                            icon={faPause} 
+                            id="pause" 
+                            className={activeButton === 'pause' ? 'active_player_button' : ''} 
+                            onClick={() => pauseSong('pause')} />
                     </div>
                 </div>
                 <button id="mobile_back" onClick={hidePlayer}>

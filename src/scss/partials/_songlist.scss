@@ -6,7 +6,7 @@
     flex-direction: row;
     align-items: center;
 }
-#results { 
+#song_list { 
 	margin-bottom: 60px;
 	transition: 1s;
 
@@ -58,7 +58,7 @@
 .control_button { 
 	padding: 0 30px; 
 	color: black; 
-	font-size: 30px; 
+	font-size: $base-unit * 3; 
 	cursor: pointer; 
 }
 .control_button:hover { 
@@ -66,12 +66,14 @@
 }
 
 #mobile_back { 
-	display: none; cursor: pointer; background-color: #8E24AA; 
+	display: none; 
+	cursor: pointer; 
+	background-color: $action;
 }
 
 @media (max-width: 989px) {
 	#content_wrap { 
-		padding: 0; 
+		padding: $base-unit * 2 $base-unit * 2 $base-unit $base-unit * 2; 
 	}
 	section { 
 		margin-bottom: 0; 
@@ -93,6 +95,9 @@
 		top: 0; 
 		left: 0; 
 		right: 0; 
+		height: 100vh;
+		z-index: 9999;
+		padding-top: $base-unit * 2;
 	}
 	#controls_wrap, .album_art, #audioPlayer { 
 		border-radius: 0; 
@@ -103,36 +108,73 @@
 		top: 0; 
 		left: 0; 
 		right: 0; 
-		z-index: 2000; 
-		padding-top: 100px; 
+		z-index: 9999; 
 	}
 	#song_name_display { 
 		padding: 10px; 
-		margin: 5px 0; 
+		margin: $base-unit * 2 0 0 0; 
 	}
 	.album_art { 
-		width: 60%; 
+		width: 60%;
+		height: initial; 
 		background-color: #ccc; 
-		height: 60%; 
 	}
 	audio { 
 		width: 90%; 
 	}
-	#multi_results img { 
+	#search_results img { 
 		width: 40%; 
 		margin: 5px 0; 
 	}
-	#multi_results, #artist_info { 
+	#search_results, #artist_info { 
 		width: 100%; 
+	}
+	#search_form {
+		width: 100%;
+		height: $base-unit * 3;
+
+		button {
+			height: $base-unit * 3;
+		}
 	}
 
 	#mobile_back { 
 		display: block; 
+		width: 100%;
+		padding: $base-unit 0;
+		border: none;
 	}
 	#mobile_back p { 
 		margin: 0; 
+		font-size: $base-font-unit * 1.5;
+		color: white;
 	}
-	#mobile_back p:hover { 
-		color: #26C6DA; 
+	#mobile_back:hover { 
+		background-color: $primary; 
+	}
+	header {
+		padding: 0;
+	}
+	footer {
+		position: relative;
+		padding: 0;
+	}
+	#song_list {
+		margin-bottom: $base-unit * 2;
+	}
+	.fa-play-circle { 
+		font-size: $base-font-unit * 3;
+	}
+	.tracks { 
+		padding: $base-unit * 0.5 0 $base-unit * 0.5 $base-unit * 0.9;
+	}
+	#controls_wrap {
+		padding: $base-unit * 3 0;
+	}
+	#audio_controls {
+		font-size: $base-font-unit * 3;
+	}
+	.info {
+		svg { z-index: 1000; }
 	}
 }

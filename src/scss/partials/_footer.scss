@@ -8,4 +8,8 @@ footer {
 	padding: $base-unit * 0.4; 
 	left: 0; 
 	width: 100%; 
+
+	a {
+		margin-left: $base-unit * 0.3;
+	}
 }

@@ -1,24 +1,19 @@
 import React from 'react';
 import { useStateContext } from '../../context/state';
-import InfoButton from '../InfoButton/';
 import AudioPlayer from '../AudioPlayer/';
 import Profile from '../Profile/';
 
 const Sidebar = () => {
     const { 
 		togglePlayer, 
-        toggleProfile 
+        toggleProfile,
+        toggleSidebar 
 	} = useStateContext();
 
     return (
-        <aside id="album_player_section">
-            <InfoButton />
-            {
-                togglePlayer && <AudioPlayer />
-            }
-            {
-                toggleProfile && <Profile />
-            }
+        <aside id="album_player_section" className={toggleSidebar ? '' : ' hidden'}>
+            { togglePlayer && <AudioPlayer /> }
+            { toggleProfile && <Profile /> }
         </aside>
     );
 }

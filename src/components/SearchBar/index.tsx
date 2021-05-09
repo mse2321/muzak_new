@@ -6,11 +6,10 @@ import _ from 'lodash';
 const SearchBar = () => {
     const { 
         getArtist,
-        getAuth, 
         setToggleMultipleSearchView
     } = useStateContext();
 
-    const [currentSearch, changeCurrentSearch] = useState('');
+    const [currentSearch, changeCurrentSearch] = useState<String>('');
     
     const updateSearchInput = (e: any) => {
         const searchValue = e.target.value;
@@ -18,9 +17,7 @@ const SearchBar = () => {
     }
 
     const submitSearch = () => {
-        getAuth()
-        .then(getArtist(currentSearch))
-        
+        getArtist(currentSearch);
         setToggleMultipleSearchView(true);
     }
 

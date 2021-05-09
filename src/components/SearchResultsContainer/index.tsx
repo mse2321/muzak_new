@@ -1,5 +1,5 @@
 import React from 'react';
-import MultipleArtists from '../MultipleArtists';
+import SearchResults from '../SearchResults/';
 import SongList from '../SongList';
 import { useStateContext } from '../../context/state';
 import _ from 'lodash';
@@ -17,8 +17,7 @@ const SearchResultsContainer = () => {
                 !_.isEmpty(songs) && <SongList songs={songs ? songs : []} />
             }
             {
-                toggleMultipleSearchView &&
-                (totalArtists.length > 1 && <MultipleArtists />)
+                toggleMultipleSearchView && ((totalArtists as Array<string>)?.length > 1 && <SearchResults />)
             }
 		</section>
     );

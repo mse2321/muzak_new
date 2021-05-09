@@ -12,13 +12,13 @@ const App = () => {
             <StateProvider>
                 <Container fluid>
                     <Row id="content_wrap">
-                        <Col xl={7}>
+                        <Col xs={12} xl={7}>
                             <ContentContainer>
                                 <SearchBar />
                                 <SearchResultsContainer />
                             </ContentContainer>
                         </Col>
-                        <Col>
+                        <Col className="sidebar_container" xs={12}>
                             <Sidebar />
                         </Col>
                     </Row>

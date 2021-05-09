@@ -2,13 +2,13 @@ import React, { useState, useContext, createContext } from "react";
 import axios from 'axios';
 import * as secrets from '../secrets.json';
 import _ from 'lodash';
+import { IDefaultContext } from '../interfaces/'
 
-const StateContext = createContext();
+const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
 
 const useStateContext = () => useContext(StateContext);
 
-const StateProvider = ({ children }) => {
-    const [currentArtist, setCurrentArtist] = useState('none');
+const StateProvider = ({ children }: any) => {
     const [totalArtists, setTotalArtists] = useState([]);
     const [songs, setSongs] = useState([]);
     const [artistDetails, setArtistDetails] = useState({});
@@ -18,6 +18,7 @@ const StateProvider = ({ children }) => {
     const [toggleSearchResults, setToggleSearchResults] = useState(false);
     const [toggleProfile, setToggleProfile] = useState(false);
     const [toggleMultipleSearchView, setToggleMultipleSearchView] = useState(false);
+    const [toggleSidebar, setToggleSidebar] = useState(false);
 
     // Spotify APIs
     const getAuth = async () => {
@@ -41,7 +42,7 @@ const StateProvider = ({ children }) => {
         }
     };
 
-    const getArtist = async (artistName) => {
+    const getArtist = async (artistName: string) => {
         const auth = 'Bearer ' + token;
 
         const headers = { 
@@ -68,7 +69,6 @@ const StateProvider = ({ children }) => {
             try {
                 const response = await axios.get(apiParams, { headers });
                 setTotalArtists(response.data.artists.items);
-                totalArtists.length === 1 && setCurrentArtist(response.data.artists.items[0].id)
             } catch (error) {
                 console.error(error);
             }
@@ -77,8 +77,7 @@ const StateProvider = ({ children }) => {
         }
     };
 
-    const getSongs = async (id) => {
-
+    const getSongs = async (id: string) => {
         const auth = 'Bearer ' + token;
 
         const headers = { 
@@ -105,9 +104,8 @@ const StateProvider = ({ children }) => {
     };
 
     // Discogs APIs
-    const getArtistDetails = async (id) => {
+    const getArtistDetails = async (id: string) => {
         const url = "https://api.discogs.com/artists/";
-        // const params = '10263';
         const endPoint = url + id;
 
         try {
@@ -118,8 +116,7 @@ const StateProvider = ({ children }) => {
         }
     };
 
-    const getArtistDiscogs = async (artistName) => {
-        console.log(artistName);
+    const getArtistDiscogs = async (artistName: string) => {
         const url = "https://api.discogs.com/database/search?";
         const params = 'q=' + artistName + '&type=artist&token=' + secrets.discogs.token;
         const endPoint = url + params;
@@ -133,8 +130,7 @@ const StateProvider = ({ children }) => {
         }
     }
 
-    const defaultContext = {
-        currentArtist,
+    const defaultContext: IDefaultContext = {
         songs,
         artistDetails,
         currentSong,
@@ -143,6 +139,7 @@ const StateProvider = ({ children }) => {
         toggleSearchResults,
         toggleProfile,
         toggleMultipleSearchView,
+        toggleSidebar,
         getAuth,
         getArtist,
         getSongs,
@@ -152,7 +149,8 @@ const StateProvider = ({ children }) => {
         setToggleSearchResults,
         setToggleProfile,
         setToggleMultipleSearchView,
-        setTotalArtists
+        setTotalArtists,
+        setToggleSidebar
     };
 
     return (
