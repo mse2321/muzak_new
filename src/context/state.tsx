@@ -19,6 +19,7 @@ const StateProvider = ({ children }: any) => {
     const [toggleProfile, setToggleProfile] = useState(false);
     const [toggleMultipleSearchView, setToggleMultipleSearchView] = useState(false);
     const [toggleSidebar, setToggleSidebar] = useState(false);
+    const [songIndex, setSongIndex] = useState(null);
 
     // Spotify APIs
     const getAuth = async () => {
@@ -140,6 +141,7 @@ const StateProvider = ({ children }: any) => {
         toggleProfile,
         toggleMultipleSearchView,
         toggleSidebar,
+        songIndex,
         getAuth,
         getArtist,
         getSongs,
@@ -150,7 +152,8 @@ const StateProvider = ({ children }: any) => {
         setToggleProfile,
         setToggleMultipleSearchView,
         setTotalArtists,
-        setToggleSidebar
+        setToggleSidebar,
+        setSongIndex
     };
 
     return (

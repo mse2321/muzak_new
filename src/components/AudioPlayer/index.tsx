@@ -9,20 +9,14 @@ const AudioPlayer = () => {
         currentSong,
         setTogglePlayer,
         setToggleSidebar,
-        songs
+        songs,
+        songIndex
     } = useStateContext();
 
     const player = document.getElementById('music');
     const playerSrc = (player as HTMLAudioElement).src;
 
     const [activeButton, setActiveButton] = useState<string>('');
-
-    const findSongInList = (activeCommand: string) => {
-        let songIndex: number;
-        const resultsIndex = songs?.indexOf(playerSrc as CurrentSong) as number;
-
-        return activeCommand === 'previousSong' ? songIndex = resultsIndex - 1 : resultsIndex + 1;
-    }
 
     useEffect(() => {
         player?.setAttribute('src', (currentSong?.preview_url as string));
@@ -42,9 +36,7 @@ const AudioPlayer = () => {
 
     const previousSong = (buttonPressed: string) => {
         setActiveButton(buttonPressed);
-        const prevSongIndex = findSongInList('previousSong') as number;
-        console.log(prevSongIndex);
-        const prevSrc = songs?[prevSongIndex];
+        const prevSrc = songs?[songIndex? - 1];
 
         activeButton === 'previous_song' &&
         player?.setAttribute('src', (prevSrc?.preview_url as string));
@@ -52,9 +44,7 @@ const AudioPlayer = () => {
 
     const nextSong = (buttonPressed: string) => {
         setActiveButton(buttonPressed);
-        const nextSongIndex = findSongInList('nextSong');
-        console.log(nextSongIndex);
-        const nextSrc = songs?[nextSongIndex];
+        const nextSrc = songs?[songIndex? + 1];
 
         activeButton === 'next_song' &&
         player?.setAttribute('src', (nextSrc?.preview_url as string));

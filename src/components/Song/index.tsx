@@ -6,15 +6,21 @@ import { Row, Col } from 'react-bootstrap';
 import _ from 'lodash';
 
 const Song = (props: any) => {
-    const { songData } = props;
+    const { 
+        songData,
+        index 
+    } = props;
+
     const { 
         setCurrentSong, 
         setTogglePlayer,
-        setToggleSidebar 
+        setToggleSidebar,
+        setSongIndex 
     } = useStateContext();
 
     const playSongs = () => {
         setToggleSidebar(true);
+        setSongIndex(index);
         setTogglePlayer(true);
         // sends the songData to the AudioPlayer component to play
         _.isEmpty(setCurrentSong) && setCurrentSong(songData);

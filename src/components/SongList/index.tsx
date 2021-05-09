@@ -13,7 +13,7 @@ const SongList = (props: any) => {
                 <ul>
                     {
                         songs?.map((song: any, index: number) => {
-                            return <Song key={index} songData={song} />
+                            return <Song key={index} songData={song} index={index}/>
                         })
                     }
                 </ul>
