@@ -1,11 +1,42 @@
 #album_player_section { 
-    padding-left: $base-unit * 15; 
-    display: none;
+    //display: none;
+    height: 100vh;
+
+    .close {
+        text-align: right;
+        margin-bottom: $base-unit * 2;
+    }
+
+    .btn {
+        background: none;
+        border: none;
+        color: $action;
+        padding: 0;
+        font-size: $base-font-unit * 2;
+        font-weight: bold;
+
+        &:hover {
+            color: $primary;
+        }
+    }
 }
 
 #artist_info { 
     position: absolute; 
-    text-align: center; 
-    height: $base-unit * 90; 
-    width: 80%;
+    width: 35%;
+    height: 100vh;
+    font-size: $base-unit;
+    overflow-y: auto;
+
+    h3 {
+        margin-bottom: $base-unit * 2;
+    }
+
+    p {
+        margin-bottom: $base-unit;
+    }
+
+    a:hover {
+		color: $primary;
+	}
 }

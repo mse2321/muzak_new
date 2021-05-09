@@ -1,8 +1,7 @@
 import React from 'react';
 import ContentContainer from './ContentContainer';
 import SearchBar from './SearchBar/';
-import AudioPlayer from './AudioPlayer/';
-import Profile from './Profile/';
+import Sidebar from './Sidebar/';
 import SearchResultsContainer from "./SearchResultsContainer/";
 import { StateProvider } from '../context/state';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -20,8 +19,7 @@ const App = () => {
                             </ContentContainer>
                         </Col>
                         <Col>
-                            <AudioPlayer />
-                            <Profile />
+                            <Sidebar />
                         </Col>
                     </Row>
                 </Container>

@@ -1,19 +1,24 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import MultipleArtists from '../MultipleArtists';
 import SongList from '../SongList';
 import { useStateContext } from '../../context/state';
+import _ from 'lodash';
 
-const SearchResultsContainer = (props: any) => {
-    const { songs, totalArtists } = useStateContext();
-
-    const allArtists = useRef(totalArtists);
-    const currentArtists = allArtists.current;
+const SearchResultsContainer = () => {
+    const { 
+        songs, 
+        totalArtists,
+        toggleMultipleSearchView
+    } = useStateContext();
 
     return (
         <section className="searchContainer">
-            <SongList songs={songs ? songs : []} />
             {
-                currentArtists.length > 1 && <MultipleArtists artists={currentArtists} />
+                !_.isEmpty(songs) && <SongList songs={songs ? songs : []} />
+            }
+            {
+                toggleMultipleSearchView &&
+                (totalArtists.length > 1 && <MultipleArtists />)
             }
 		</section>
     );

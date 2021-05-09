@@ -1,19 +1,36 @@
 import React from 'react';
 import { useStateContext } from '../../context/state';
+import _ from 'lodash';
 
-const MultipleArtists = (props: any) => {
-    const { artists } = props;
-    const { getArtist } = useStateContext();
+const MultipleArtists = () => {
+    const { 
+        totalArtists,
+        getAuth,
+        getSongs,
+        getArtistDiscogs,
+        setToggleMultipleSearchView,
+        songs,
+        setToggleSearchResults,
+    } = useStateContext();
+
+    const reSubmitSearch = (artistName: string, artistId: string) => {
+        getAuth()
+        .then(getSongs(artistId))
+        .then(getArtistDiscogs(artistName))
+
+        !_.isEmpty(songs) && setToggleSearchResults(true);
+        setToggleMultipleSearchView(false);
+    }
 
     return (
 		<div id="multi_results">
+            <h2>Multiple Results</h2>
+            <p>Please choose an option from the following:</p>
             <ul>
                 {
-                    artists.map((artist: any) => {
-                        return <li onClick={() => getArtist(artist.name)}>
-                            <img className="artist_thumbs" src={ artist.images[0] } 
-                            alt={ artist.name + ' Thumbnail Picture' }  />
-                                &nbsp;&nbsp;{ artist.name }
+                    !_.isEmpty(totalArtists) && totalArtists?.map((artist: any, index: number) => {
+                        return <li key={index} className="result" onClick={() => reSubmitSearch(artist?.name, artist?.id)}>
+                            { artist?.name }
                         </li>
                     })
                 }

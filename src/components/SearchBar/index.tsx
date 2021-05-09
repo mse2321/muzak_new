@@ -3,13 +3,11 @@ import { useStateContext } from '../../context/state';
 import { Button, FormControl, InputGroup  } from 'react-bootstrap';
 import _ from 'lodash';
 
-const SearchBar = (props: any) => {
+const SearchBar = () => {
     const { 
         getArtist,
         getAuth, 
-        getSongs,
-        getArtistDiscogs,
-        songs
+        setToggleMultipleSearchView
     } = useStateContext();
 
     const [currentSearch, changeCurrentSearch] = useState('');
@@ -22,11 +20,8 @@ const SearchBar = (props: any) => {
     const submitSearch = () => {
         getAuth()
         .then(getArtist(currentSearch))
-        //.then(currentArtists.length === 1 && getSongs())
-        .then(getSongs())
-        .then(getArtistDiscogs(currentSearch))
-
-        //_.isEmpty(songs) && showResults(true);
+        
+        setToggleMultipleSearchView(true);
     }
 
     return (

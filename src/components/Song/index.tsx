@@ -3,6 +3,7 @@ import { useStateContext } from '../../context/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { Row, Col } from 'react-bootstrap';
+import _ from 'lodash';
 
 const Song = (props: any) => {
     const { songData } = props;
@@ -11,7 +12,7 @@ const Song = (props: any) => {
     const playSongs = () => {
         setTogglePlayer(true);
         // sends the songData to the AudioPlayer component to play
-        return setCurrentSong ? setCurrentSong(songData) : '';
+        _.isEmpty(setCurrentSong) && setCurrentSong(songData);
     }
 
     return (

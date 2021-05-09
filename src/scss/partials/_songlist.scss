@@ -14,30 +14,7 @@
 		border-top: 2px solid #666;
 	}
 }
-#multi_results { 
-	background-color: #37474F; 
-	color: white; 
-	position: fixed; 
-	left: 0; 
-	bottom: 0; 
-	top: 0; 
-	padding: 70px 40px 40px 40px; 
-	z-index: 5000; 
-	overflow-y: scroll; 
-	transition: 1s;
-}
-#multi_results img { 
-	width: 10%; 
-	margin: 5px 0; 
-}
-#multi_results li { 
-	cursor: pointer; 
-	font-size: 20px; 
-	color: #26C6DA; 
-}
-#multi_results li:hover { 
-	color: white; 
-}
+
 .fa-play-circle { 
 	font-size: 2em; 
 	color: #26C6DA; 

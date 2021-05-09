@@ -1,15 +1,12 @@
-audio { 
-	display: none; 
-}
 #artist_info { 
-	background-color: #37474F; 
+	background-color: black; 
 	color: white; 
 	position: fixed; 
 	right: 0; 
 	bottom: $base-unit * 4; 
 	top: 0; 
-	padding: $base-unit * 7 $base-unit * 4 $base-unit * 4 $base-unit * 4; 
-	z-index: 5000; 
+	padding: $base-unit * 2.2 $base-unit * 3 $base-unit $base-unit * 2; 
+	z-index: 9000; 
 	transition: 1s;
 }
 #artist_info h3 { 
@@ -30,12 +27,13 @@ audio {
 	color: white; 
 }
 .album { 
-	color: #26C6DA; 
+	color: #757575; 
 	font-size: $base-font-unit * 1.6; 
 }
 
 .audioPlayer_container {
-	padding: $base-unit * 12 $base-unit * 10;
+	padding: $base-unit * 11 $base-unit * 10 0 $base-unit * 10;
+	height: 100%;
 }
 
 #audioPlayer { 
@@ -48,7 +46,6 @@ audio {
 	transition: 1s;
 	margin: 0 auto;
 	text-align: center; 
-	//display: none;
 }
 .album_art { 
 	height: 100%; 
@@ -65,8 +62,13 @@ audio {
 		color: $action;
 		cursor: pointer;
 
-		:hover {
+		:hover,
+		:active {
 			color: $primary;
 		}
 	}
+}
+
+audio {
+	display: none;
 }

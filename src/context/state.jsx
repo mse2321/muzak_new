@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useRef } from "react";
+import React, { useState, useContext, createContext } from "react";
 import axios from 'axios';
 import * as secrets from '../secrets.json';
 import _ from 'lodash';
@@ -10,19 +10,14 @@ const useStateContext = () => useContext(StateContext);
 const StateProvider = ({ children }) => {
     const [currentArtist, setCurrentArtist] = useState('none');
     const [totalArtists, setTotalArtists] = useState([]);
-
     const [songs, setSongs] = useState([]);
-
-    const [currentArtistIdDiscogs, setCurrentArtistIdDiscogs] = useState(null);
-
     const [artistDetails, setArtistDetails] = useState({});
-
     const [currentSong, setCurrentSong] = useState({});
-
     const [token, setToken] = useState('');
-
     const [togglePlayer, setTogglePlayer] = useState(false);
     const [toggleSearchResults, setToggleSearchResults] = useState(false);
+    const [toggleProfile, setToggleProfile] = useState(false);
+    const [toggleMultipleSearchView, setToggleMultipleSearchView] = useState(false);
 
     // Spotify APIs
     const getAuth = async () => {
@@ -72,9 +67,8 @@ const StateProvider = ({ children }) => {
         if(!_.isEmpty(token)) {
             try {
                 const response = await axios.get(apiParams, { headers });
-                setTotalArtists(response.data.artists.items[0]);
-                //totalArtists.length === 1 && setCurrentArtist(response.data.artists.items[0].id);
-                setCurrentArtist(response.data.artists.items[0].id);
+                setTotalArtists(response.data.artists.items);
+                totalArtists.length === 1 && setCurrentArtist(response.data.artists.items[0].id)
             } catch (error) {
                 console.error(error);
             }
@@ -83,7 +77,7 @@ const StateProvider = ({ children }) => {
         }
     };
 
-    const getSongs = async () => {
+    const getSongs = async (id) => {
 
         const auth = 'Bearer ' + token;
 
@@ -96,12 +90,11 @@ const StateProvider = ({ children }) => {
 
         const url = 'https://api.spotify.com/v1/artists/';
 
-        const apiParams = url + currentArtist + '/top-tracks?market=US';
+        const apiParams = url + id + '/top-tracks?market=US';
 
-        if(!_.isEmpty(token) && currentArtist !== 'none') {
+        if(!_.isEmpty(token) && id !== 'none') {
             try {
                 const response = await axios.get(apiParams, { headers });
-                console.log(response.data.tracks);
                 setSongs(response.data.tracks);
             } catch (error) {
                 console.error(error);
@@ -112,36 +105,33 @@ const StateProvider = ({ children }) => {
     };
 
     // Discogs APIs
-    const getArtistDetails = async () => {
+    const getArtistDetails = async (id) => {
         const url = "https://api.discogs.com/artists/";
-        // const params = currentArtistIdDiscogs;
-        const params = '10263';
-        const endPoint = url + params;
+        // const params = '10263';
+        const endPoint = url + id;
 
         try {
             const response = await axios.get(endPoint);
-            setArtistDetails(response);
+            setArtistDetails(response.data);
         } catch (error) {
             console.error(error);
         }
     };
 
     const getArtistDiscogs = async (artistName) => {
+        console.log(artistName);
         const url = "https://api.discogs.com/database/search?";
         const params = 'q=' + artistName + '&type=artist&token=' + secrets.discogs.token;
         const endPoint = url + params;
 
         try {
             const response = await axios.get(endPoint);
-            const artistId = response.data.results[0].id;
-            setCurrentArtistIdDiscogs(artistId.toString());
-            getArtistDetails();
+            const artistId = response?.data.results[0].id;
+            getArtistDetails(artistId.toString());
         } catch (error) {
             console.error(error);
         }
     }
-
-
 
     const defaultContext = {
         currentArtist,
@@ -151,13 +141,18 @@ const StateProvider = ({ children }) => {
         totalArtists,
         togglePlayer,
         toggleSearchResults,
+        toggleProfile,
+        toggleMultipleSearchView,
         getAuth,
         getArtist,
         getSongs,
         getArtistDiscogs,
         setCurrentSong,
         setTogglePlayer,
-        setToggleSearchResults
+        setToggleSearchResults,
+        setToggleProfile,
+        setToggleMultipleSearchView,
+        setTotalArtists
     };
 
     return (

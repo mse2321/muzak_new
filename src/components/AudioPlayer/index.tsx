@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useStateContext } from '../../context/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 
-const AudioPlayer = (props: any) => {
-    const { currentSong } = useStateContext();
-    const [audio, setAudio] = useState(new Audio());
+const AudioPlayer = () => {
+    const { 
+        currentSong,
+        setTogglePlayer 
+    } = useStateContext();
+
+    const player = document.getElementById('music');
 
     useEffect(() => {
-        setAudio(new Audio(currentSong?.preview_url));
-    }, [currentSong]);
+        player?.setAttribute('src', currentSong?.preview_url)
+    }, [player, currentSong]);
 
     const actionMessage = 'Back to results';
 
     const replaySong = () => {
-        audio.play();
+        (player as HTMLAudioElement).play();
     };
 
     const pauseSong = () => {
-        audio.pause();
+        (player as HTMLAudioElement).pause();
     };
     
     const hidePlayer = () => {
-        console.log('player is hidden');
+        setTogglePlayer(false);
     };
 
     return (
         <div className={"audioPlayer_container"}>
-            <audio id="music" controls>
-                <source src={ currentSong?.preview_url } type="audio/mpeg" />
-            </audio>
+            <audio id="music" src={ currentSong?.preview_url } />
             <div id="audioPlayer">
                 <img className="album_art" src={ currentSong?.album?.images[0]?.url } alt="" />
                 <div id="song_name_display">
