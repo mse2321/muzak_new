@@ -36,6 +36,16 @@
 	height: 100%;
 }
 
+.no_tracks {
+	padding: $base-unit * 11 $base-unit * 3 0 $base-unit * 3;
+	font-size: $base-font-unit * 1.5;
+	color: red;
+	background-color: black;
+	height: 100vh;
+    width: $base-unit * 41;
+    margin-left: $base-unit * 2;
+}
+
 #audioPlayer { 
 	background-color: #777; 
 	border: 5px solid #ccc; 
@@ -70,4 +80,4 @@
 }
 
 // hides default player
-audio { display: none; }
+audio { visibility: hidden; }

@@ -4,5 +4,9 @@
         border: none;
         font-size: $base-font-unit * 3;
         color: $action;
+
+        &:hover {
+            color: $primary;
+        }
     }
 }

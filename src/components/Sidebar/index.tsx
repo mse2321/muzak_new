@@ -7,12 +7,20 @@ const Sidebar = () => {
     const { 
 		togglePlayer, 
         toggleProfile,
-        toggleSidebar 
+        toggleSidebar,
+        currentSong,
+        displayNoTracksMessage
 	} = useStateContext();
 
     return (
-        <aside id="album_player_section" className={toggleSidebar ? '' : ' hidden'}>
-            { togglePlayer && <AudioPlayer /> }
+        <aside id="album_player_section" className={toggleSidebar ? '' : 'hidden'}>
+            { 
+                currentSong?.preview_url ? togglePlayer && <AudioPlayer /> :
+                <div className={"no_tracks" + (!displayNoTracksMessage ? ' hidden' : '')}>
+                    Sorry Spotify does not have preview tracks available for this artist.
+                    Check out their profile or select a new artist.
+                </div>
+            }
             { toggleProfile && <Profile /> }
         </aside>
     );

@@ -15,15 +15,17 @@ const Song = (props: any) => {
         setCurrentSong, 
         setTogglePlayer,
         setToggleSidebar,
-        setSongIndex 
+        setSongIndex,
+        setDisplayNoTracksMessage
     } = useStateContext();
 
     const playSongs = () => {
+        // sends the songData to the AudioPlayer component to play
+        setCurrentSong(songData);
         setToggleSidebar(true);
         setSongIndex(index);
+        setDisplayNoTracksMessage(true);
         setTogglePlayer(true);
-        // sends the songData to the AudioPlayer component to play
-        _.isEmpty(setCurrentSong) && setCurrentSong(songData);
     }
 
     return (

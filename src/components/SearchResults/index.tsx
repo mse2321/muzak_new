@@ -10,9 +10,13 @@ const SearchResults = () => {
         setToggleMultipleSearchView,
         songs,
         setToggleSearchResults,
+        setTogglePlayer
     } = useStateContext();
 
-    const reSubmitSearch = (artistName: string, artistId: string) => {
+    const submitSearch = (artistName: string, artistId: string) => {
+        // clearing previous selections
+        setTogglePlayer(false);
+
         getSongs(artistId)
         .then(getArtistDiscogs(artistName))
 
@@ -26,11 +30,11 @@ const SearchResults = () => {
             <p>Please choose an option from the following:</p>
             <ul>
                 {
-                    !_.isEmpty(totalArtists) && totalArtists?.map((artist: any, index: number) => {
-                        return <li key={index} className="result" onClick={() => reSubmitSearch(artist?.name, artist?.id)}>
+                    !_.isEmpty(totalArtists) ? totalArtists?.map((artist?: any, index?: number) => {
+                        return <li key={index} className="result" onClick={() => submitSearch(artist?.name, artist?.id)}>
                             { artist?.name }
                         </li>
-                    })
+                    }) : 'Sorry there was a problem. Please try again'
                 }
             </ul>
 		</div>

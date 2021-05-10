@@ -6,7 +6,8 @@ export interface Song {
 }
 
 export interface Artist {
-    name: string
+    name?: string,
+    id?: string
 }
 
 export interface ArtistDetails {
@@ -32,10 +33,11 @@ export interface CurrentSong {
 export interface IDefaultContext {
     searchTerm?: string,
     songs?: Array<CurrentSong>,
-    totalArtists?: Array<Artist> | [],
+    totalArtists?: Array<Artist>,
     artistDetails?: ArtistDetails,
     currentSong?: CurrentSong,
     songIndex?: number | null,
+    displayNoTracksMessage? : boolean,
     getAuth: Function,
     getArtist: Function,
     getSongs: Function,
@@ -48,6 +50,7 @@ export interface IDefaultContext {
     setToggleSidebar: Function,
     setCurrentSong: Function,
     setSongIndex: Function,
+    setDisplayNoTracksMessage: Function,
     togglePlayer: boolean,
     toggleSearchResults: boolean,
     toggleProfile: boolean,

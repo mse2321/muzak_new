@@ -66,12 +66,14 @@
 }
 
 #mobile_back { 
-	display: none; 
+	visibility: hidden;; 
 	cursor: pointer; 
 	background-color: $action;
 }
 
-@media (max-width: 989px) {
+// TODO - set media queries based on bootstrap and have audio player display with blacked-out bg
+
+@media (max-width: 999px) {
 	#content_wrap { 
 		padding: $base-unit * 2 $base-unit * 2 $base-unit $base-unit * 2; 
 	}
@@ -176,5 +178,9 @@
 	}
 	.info {
 		svg { z-index: 1000; }
+	}
+	.sidebar_container {
+		position: absolute;
+		top: 0;
 	}
 }
