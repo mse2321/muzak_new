@@ -61,7 +61,6 @@ const AudioPlayer = () => {
 
     return (
         <div className={"audioPlayer_container"}>
-            <audio id="music" src={ currentSong?.preview_url } />
             <div id="audioPlayer">
                 <img className="album_art" src={ currentSong?.album?.images[0]?.url } alt="" />
                 <div id="song_name_display">

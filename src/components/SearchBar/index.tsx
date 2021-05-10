@@ -6,14 +6,16 @@ import _ from 'lodash';
 const SearchBar = () => {
     const { 
         getArtist,
-        setToggleMultipleSearchView,
+        setToggleSearchResultsView,
         setDisplayNoTracksMessage,
-        displayNoTracksMessage
+        displayNoTracksMessage,
+        setShowErrorView
     } = useStateContext();
 
     const [currentSearch, changeCurrentSearch] = useState<String>('');
     
     const updateSearchInput = (e: any) => {
+        setShowErrorView(false);
         const searchValue = e.target.value;
         changeCurrentSearch(searchValue);
     }
@@ -21,7 +23,7 @@ const SearchBar = () => {
     const submitSearch = () => {
         displayNoTracksMessage && setDisplayNoTracksMessage(false);
         getArtist(currentSearch);
-        setToggleMultipleSearchView(true);
+        setToggleSearchResultsView(true);
     }
 
     return (

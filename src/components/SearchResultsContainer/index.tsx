@@ -7,17 +7,16 @@ import _ from 'lodash';
 const SearchResultsContainer = () => {
     const { 
         songs, 
-        totalArtists,
-        toggleMultipleSearchView
+        toggleSearchResultsView
     } = useStateContext();
 
     return (
         <section className="searchContainer">
             {
-                !_.isEmpty(songs) && <SongList songs={songs ? songs : []} />
+                toggleSearchResultsView && <SearchResults />
             }
             {
-                toggleMultipleSearchView && ((totalArtists as Array<string>)?.length > 1 && <SearchResults />)
+                !_.isEmpty(songs) && <SongList songs={songs ? songs : []} />
             }
 		</section>
     );

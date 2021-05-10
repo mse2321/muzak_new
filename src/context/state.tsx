@@ -17,10 +17,11 @@ const StateProvider = ({ children }: any) => {
     const [togglePlayer, setTogglePlayer] = useState(false);
     const [toggleSearchResults, setToggleSearchResults] = useState(false);
     const [toggleProfile, setToggleProfile] = useState(false);
-    const [toggleMultipleSearchView, setToggleMultipleSearchView] = useState(false);
+    const [toggleSearchResultsView, setToggleSearchResultsView] = useState(false);
     const [toggleSidebar, setToggleSidebar] = useState(false);
     const [songIndex, setSongIndex] = useState(null);
     const [displayNoTracksMessage, setDisplayNoTracksMessage] = useState(true);
+    const [showErrorView, setShowErrorView] = useState(false);
 
     // Spotify APIs
     const getAuth = async () => {
@@ -39,7 +40,9 @@ const StateProvider = ({ children }: any) => {
         try {
             const response = await axios.post(url, body, { headers });
             setToken(response.data.access_token);
+            setShowErrorView(false);
         } catch (error) {
+            setShowErrorView(true);
             console.error(error);
         }
     };
@@ -71,7 +74,9 @@ const StateProvider = ({ children }: any) => {
             try {
                 const response = await axios.get(apiParams, { headers });
                 setTotalArtists(response.data.artists.items);
+                setShowErrorView(false);
             } catch (error) {
+                setShowErrorView(true);
                 console.error(error);
             }
         } else {
@@ -97,7 +102,9 @@ const StateProvider = ({ children }: any) => {
             try {
                 const response = await axios.get(apiParams, { headers });
                 setSongs(response.data.tracks);
+                setShowErrorView(false);
             } catch (error) {
+                setShowErrorView(true);
                 console.error(error);
             }
         } else {
@@ -113,7 +120,9 @@ const StateProvider = ({ children }: any) => {
         try {
             const response = await axios.get(endPoint);
             setArtistDetails(response.data);
+            setShowErrorView(false);
         } catch (error) {
+            setShowErrorView(true);
             console.error(error);
         }
     };
@@ -127,7 +136,9 @@ const StateProvider = ({ children }: any) => {
             const response = await axios.get(endPoint);
             const artistId = response?.data.results[0].id;
             getArtistDetails(artistId.toString());
+            setShowErrorView(false);
         } catch (error) {
+            setShowErrorView(true);
             console.error(error);
         }
     }
@@ -140,10 +151,11 @@ const StateProvider = ({ children }: any) => {
         togglePlayer,
         toggleSearchResults,
         toggleProfile,
-        toggleMultipleSearchView,
+        toggleSearchResultsView,
         toggleSidebar,
         songIndex,
         displayNoTracksMessage,
+        showErrorView,
         getAuth,
         getArtist,
         getSongs,
@@ -152,11 +164,12 @@ const StateProvider = ({ children }: any) => {
         setTogglePlayer,
         setToggleSearchResults,
         setToggleProfile,
-        setToggleMultipleSearchView,
+        setToggleSearchResultsView,
         setTotalArtists,
         setToggleSidebar,
         setSongIndex,
-        setDisplayNoTracksMessage
+        setDisplayNoTracksMessage,
+        setShowErrorView
     };
 
     return (

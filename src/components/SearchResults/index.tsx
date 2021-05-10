@@ -7,7 +7,7 @@ const SearchResults = () => {
         totalArtists,
         getSongs,
         getArtistDiscogs,
-        setToggleMultipleSearchView,
+        setToggleSearchResultsView,
         songs,
         setToggleSearchResults,
         setTogglePlayer
@@ -21,7 +21,7 @@ const SearchResults = () => {
         .then(getArtistDiscogs(artistName))
 
         !_.isEmpty(songs) && setToggleSearchResults(true);
-        setToggleMultipleSearchView(false);
+        setToggleSearchResultsView(false);
     }
 
     return (
