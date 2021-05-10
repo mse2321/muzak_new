@@ -19,13 +19,11 @@
         font-weight: bold;
     }
 
-    p {
-        margin-top: $base-unit * 1.5;
-    }
+    p { margin-top: $base-unit * 1.5; }
 }
 .fa-exclamation-triangle {
 	display: block;
-	font-size: 5em;
-	margin-bottom: 0.5em;
+	font-size: $base-unit * 8;
+	margin-bottom: $base-unit * 0.5;
     margin: 0 auto;
 }

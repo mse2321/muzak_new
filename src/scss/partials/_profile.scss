@@ -1,5 +1,4 @@
 #album_player_section { 
-    //visibility: hidden;;
     height: 100vh;
 
     .close {
@@ -15,9 +14,7 @@
         font-size: $base-font-unit * 2;
         font-weight: bold;
 
-        &:hover {
-            color: $primary;
-        }
+        &:hover { color: $primary; }
     }
 }
 
@@ -28,15 +25,9 @@
     font-size: $base-unit;
     overflow-y: auto;
 
-    h3 {
-        margin-bottom: $base-unit * 2;
-    }
+    h3      { margin-bottom: $base-unit * 2; }
 
-    p {
-        margin-bottom: $base-unit;
-    }
+    p       { margin-bottom: $base-unit; }
 
-    a:hover {
-		color: $primary;
-	}
+    a:hover { color: $primary; }
 }

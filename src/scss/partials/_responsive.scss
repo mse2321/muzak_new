@@ -1,0 +1,107 @@
+// TODO - set media queries based on bootstrap and have audio player display with blacked-out bg
+
+@media (max-width: 999px) {
+	#content_wrap 		{ padding: $base-unit * 2 $base-unit * 2 $base-unit $base-unit * 2; }
+	
+	section 			{ margin-bottom: 0; }
+
+	tr, 
+	td,
+	.input-group 		{ width: 100%; }
+
+	#audioPlayer_wrap 	{ width: 80%; }
+	#audioPlayer { 
+		margin-top: 0; 
+		width: 100%; 
+		border: none; 
+		border-top: 5px solid #616161; 
+		background-color: #263238; 
+		width: 100%; 
+		position: fixed;
+		top: 0; 
+		left: 0; 
+		right: 0; 
+		height: 100vh;
+		z-index: 9999;
+		padding-top: $base-unit * 2;
+	}
+
+	#controls_wrap, 
+	.album_art, 
+	#audioPlayer { border-radius: 0; }
+
+	#album_player_section { 
+		padding-left: 0; 
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		right: 0; 
+		z-index: 9999; 
+	}
+
+	#song_name_display { 
+		padding: 10px; 
+		margin: $base-unit * 2 0 0 0; 
+	}
+	
+	.album_art { 
+		width: 60%;
+		height: initial; 
+		background-color: #ccc; 
+	}
+
+	#search_results img { 
+		width: 40%; 
+		margin: 5px 0; 
+	}
+	#search_results, 
+	#artist_info { width: 100%; }
+
+	#search_form {
+		width: 100%;
+		height: $base-unit * 3;
+
+		button { height: $base-unit * 3; }
+	}
+
+	#mobile_back { 
+		display: block; 
+		width: 100%;
+		padding: $base-unit 0;
+		border: none;
+
+		&:hover { background-color: $primary; }
+
+		p { 
+			margin: 0; 
+			font-size: $base-font-unit * 1.5;
+			color: white;
+		}
+	}
+
+	header { padding: 0;}
+
+	footer {
+		position: relative;
+		padding: 0;
+	}
+
+	#song_list 		{ margin-bottom: $base-unit * 2; }
+
+	.fa-play-circle { font-size: $base-font-unit * 3; }
+
+	.tracks { padding: $base-unit * 0.5 0 $base-unit * 0.5 $base-unit * 0.9; }
+
+	#controls_wrap 	{ padding: $base-unit * 3 0; }
+
+	#audio_controls { font-size: $base-font-unit * 3; }
+
+	.info {
+		svg { z-index: 1000; }
+	}
+
+	.sidebar_container {
+		position: absolute;
+		top: 0;
+	}
+}

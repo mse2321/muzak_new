@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import Header from './index';
 
-it('does someting', () => {
-    render(<Header />);
-
-    expect(<Header />);
+it('renders Header component', () => {
+  const { container } = render(<Header />);
+  
+  expect(container.getElementsByTagName('header'));
 });
