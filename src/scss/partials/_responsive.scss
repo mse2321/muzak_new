@@ -1,6 +1,65 @@
 // TODO - set media queries based on bootstrap and have audio player display with blacked-out bg
 
-@media (max-width: 999px) {
+@media (min-width: 1200px) and (max-width: 1400px) {
+	#audioPlayer { 
+		width: 100%; 
+		background-color: #ccc;
+		border-radius: 1.5rem;
+		width: 25%; 
+		position: fixed;
+		top: 28%;  
+		right: 5%;
+		z-index: 9999;
+	}
+
+	#song_name_display { 
+		padding: $base-unit; 
+		margin-top: $base-unit * 0.3;
+	}
+
+	footer {
+		position: relative;
+		padding: 0;
+		margin-bottom: $base-unit;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+	#audioPlayer_wrap 	{ width: 80%; }
+	#audioPlayer { 
+		width: 100%; 
+		border-radius: 1.5rem;
+		background-color: #ccc; 
+		width: 30%; 
+		position: fixed;
+		top: 28%;  
+		right: 5%;
+		z-index: 9999;
+	}
+
+	#album_player_section { 
+		position: initial;
+	}
+
+	#song_name_display { 
+		padding: $base-unit; 
+		margin-top: $base-unit * 0.3;
+	}
+	
+	.album_art { 
+		width: 100%;
+		height: initial; 
+		background-color: #ccc; 
+	}
+
+	footer {
+		position: relative;
+		padding: 0;
+		margin-bottom: $base-unit;
+	}
+}
+
+@media (max-width: 768px) {
 	#content_wrap 		{ padding: $base-unit * 2 $base-unit * 2 $base-unit $base-unit * 2; }
 	
 	section 			{ margin-bottom: 0; }
@@ -11,7 +70,7 @@
 
 	#audioPlayer_wrap 	{ width: 80%; }
 	#audioPlayer { 
-		margin-top: 0; 
+		margin: 0 auto;
 		width: 100%; 
 		border: none; 
 		border-top: 5px solid #616161; 
@@ -50,10 +109,6 @@
 		background-color: #ccc; 
 	}
 
-	#search_results img { 
-		width: 40%; 
-		margin: 5px 0; 
-	}
 	#search_results, 
 	#artist_info { width: 100%; }
 

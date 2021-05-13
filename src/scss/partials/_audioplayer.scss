@@ -31,10 +31,7 @@
 	font-size: $base-font-unit * 1.6; 
 }
 
-.audioPlayer_container {
-	padding: $base-unit * 11 $base-unit * 10 0 $base-unit * 10;
-	height: 100%;
-}
+.audioPlayer_container { height: 100%; }
 
 .no_tracks {
 	padding: $base-unit * 11 $base-unit * 3 0 $base-unit * 3;
@@ -47,15 +44,15 @@
 }
 
 #audioPlayer { 
-	background-color: #777; 
+	background-color: #ccc; 
 	border: 5px solid #ccc; 
 	color: white; 
 	border-radius: $base-unit * 1.5; 
-	width: 100%; 
+	width: 50%; 
 	line-height: $base-unit * 2;
 	transition: 1s;
-	margin: 0 auto;
 	text-align: center; 
+	margin: 0 auto;
 }
 .album_art { 
 	height: 100%; 
@@ -68,7 +65,7 @@
 	font-size: $base-font-unit * 2;
 
 	svg {
-		margin-right: $base-unit * 1.5;
+		margin: 0 $base-unit * 0.5;
 		color: $action;
 		cursor: pointer;
 
@@ -77,6 +74,45 @@
 	}
 
 	.active_player_button { color: $primary; }
+}
+
+#play_buttons { 
+	text-align: right; 
+	background: none;
+    border: none;
+}
+#song_name_display { 
+	background-color: black; 
+	padding: $base-unit * 0.5; 
+	margin-top: $base-unit * 0.3;
+	font-size: $base-font-unit * 1.5; 
+}
+#song_name_display p { 
+	padding: 0; 
+	margin: 0; 
+	font-family: 'Roboto', sans-serif; 
+}
+#controls_wrap { 
+	background: linear-gradient(#9e9e9e, #fafafa, #9e9e9e); 
+	padding: $base-unit; 
+	border-radius: 0 0 $base-unit $base-unit; 
+}
+.control_button { 
+	padding: 0 30px; 
+	color: black; 
+	font-size: $base-unit * 3; 
+	cursor: pointer; 
+}
+.control_button:hover { color: $action; }
+
+#mobile_back { 
+	display: none;
+	cursor: pointer; 
+	background-color: $action;
+}
+
+#album_player_section {
+	padding-top: $base-unit * 12;
 }
 
 // hides default player
