@@ -6,7 +6,7 @@ const Header = () => {
     const { currentSong } = useStateContext();
 
     const heading = 'Muzak';
-    const introMessage1 = 'Listen to preview tracks from your favorite artists using ';
+    const introMessage1 = 'Listen to available preview tracks from your favorite artists using ';
     const introMessage2 = ' and artist information from ';
     const spotify = 'Spotify';
     const discogs = 'Discogs';

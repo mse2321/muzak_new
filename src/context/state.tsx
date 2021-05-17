@@ -2,7 +2,7 @@ import React, { useState, useContext, createContext } from "react";
 import axios from 'axios';
 import * as secrets from '../secrets.json';
 import _ from 'lodash';
-import { IDefaultContext } from '../interfaces/'
+import { CurrentSong, IDefaultContext } from '../interfaces/'
 
 const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
 
@@ -101,14 +101,19 @@ const StateProvider = ({ children }: any) => {
         if(!_.isEmpty(token) && id !== 'none') {
             try {
                 const response = await axios.get(apiParams, { headers });
-                setSongs(response.data.tracks);
+                const allTracks = response.data.tracks;
+
+                // need to only include tracks with preview_urls
+                const tracksWithPreviews = allTracks.filter((track: CurrentSong) => !_.isEmpty(track?.preview_url));
+
+                setSongs(tracksWithPreviews);
                 setShowErrorView(false);
             } catch (error) {
                 setShowErrorView(true);
                 console.error(error);
             }
         } else {
-            console.log('problem with token for songs')
+            console.log('problem with token for songs');
         }
     };
 
@@ -179,4 +184,4 @@ const StateProvider = ({ children }: any) => {
     )
 };
 
-export { StateProvider, useStateContext };
+export { StateProvider, useStateContext, StateContext };

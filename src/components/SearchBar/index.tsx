@@ -42,19 +42,3 @@ const SearchBar = () => {
 }
 
 export default SearchBar;
-
-/*
-    <div id="search_form" className="input-group">
-        <form action="#">
-            <input 
-                type="text"
-                placeholder="Search for something?!"
-                className="form-control" 
-                id="search" 
-                onChange={(e) => updateSearchInput(e)} />
-            <span className="input-group-btn">
-                <button type="submit" id="submit" className="btn btn-default" onClick={submitSearch}>Search</button>
-            </span>
-        </form>		
-    </div>
-*/

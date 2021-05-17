@@ -20,6 +20,7 @@ export interface ArtistDetails {
 
 export interface CurrentSong {
     preview_url?: string,
+    href?: string,
     albumImageSource?: string,
     album?: {
         images: Array<{
@@ -27,7 +28,7 @@ export interface CurrentSong {
         }>,
         name: string
     },
-    name?: string,
+    name?: string
 }
 
 export interface IDefaultContext {

@@ -77,21 +77,25 @@ const AudioPlayer = () => {
                         <FontAwesomeIcon 
                             icon={faStepBackward} 
                             id="previous_song" 
+                            role="button"
                             className={activeButton === 'previous_song' ? 'active_player_button' : ''} 
                             onClick={() => previousSong('previous_song')} />
                         <FontAwesomeIcon 
                             icon={faPlay} 
                             id="play" 
+                            role="button"
                             className={activeButton === 'play' ? 'active_player_button' : ''} 
                             onClick={() => replaySong('play')} />
                         <FontAwesomeIcon 
                             icon={faPause} 
                             id="pause" 
+                            role="button"
                             className={activeButton === 'pause' ? 'active_player_button' : ''} 
                             onClick={() => pauseSong('pause')} />
                         <FontAwesomeIcon 
                             icon={faStepForward} 
                             id="next_song" 
+                            role="button"
                             className={activeButton === 'next_song' ? 'active_player_button' : ''} 
                             onClick={() => nextSong('next_song')} />
                     </div>

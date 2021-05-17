@@ -5,5 +5,5 @@ import SearchResultsContainer from './index';
 it('renders SearchResultsContainer component', () => {
   const { container } = render(<SearchResultsContainer />);
   
-  expect(container.querySelector('className="searchContainer"'));
+  expect(container.querySelector('[className="searchContainer"]'));
 });

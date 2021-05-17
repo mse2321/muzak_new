@@ -5,5 +5,5 @@ import ErrorView from './index';
 it('renders ErrorView component', () => {
   const { container } = render(<ErrorView />);
   
-  expect(container.querySelector('className="error_view"'));
+  expect(container.querySelector('[class="error_view"]'));
 });
