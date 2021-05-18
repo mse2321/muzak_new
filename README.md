@@ -4,13 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Music search engine using Spotify and Discogs APIs.
 
-This is a search engine, powered by Spotify's API, that lets you search for your favorite artist and listen to previews of their most popular songs. I created my own custom audio player with album art.
+This is a search engine, powered by Spotify's API, that lets you search for your favorite artist and listen to previews of their most popular songs. I created my own custom audio player with album art. You can also look at a bio and a link to more info on each artist from Discogs via the info icon button.
 
-In a future update, I will add a biography section and possibly links to that artist's website.
 
-** Update April 2018 - Spotify has made a change to their API that I will need to investigate and fix in Muzak. For now this is down for maintenance. I plan to do this as soon as I can.
-
-Made with the following - HTML5, CSS3, JavaScript, jQuery, Bootstrap, Angular, Spotify API, Responsive Web Design
+Made with the following - HTML5, CSS3, React, React-Bootstrap, Bootstrap, SASS, Discogs API, Spotify API, Axios, and more...
 
 ## Available Scripts
 
