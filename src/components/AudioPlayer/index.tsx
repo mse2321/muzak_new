@@ -1,38 +1,103 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../../context/state';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPause, faPlay, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
 
 const AudioPlayer = () => {
-    const { currentSong } = useStateContext();
+    const { 
+        currentSong,
+        setTogglePlayer,
+        setToggleSidebar,
+        songs,
+        songIndex,
+        setSongIndex,
+        setCurrentSong
+    } = useStateContext();
+
+    const player = document.getElementById('music');
+
+    const [activeButton, setActiveButton] = useState<string>('pause');
+    const [playerIssue, setPlayerIssue] = useState<boolean>(false);
+
+    useEffect(() => {
+        player?.setAttribute('src', (currentSong?.preview_url as string));
+    }, [player, currentSong]);
 
     const actionMessage = 'Back to results';
 
-    const replaySong = () => {
-        console.log('song is restarting');
-    };
+    const replaySong = (buttonPressed: string) => {
+        setActiveButton(buttonPressed);
+        player ? setPlayerIssue(false) : setPlayerIssue(true);
+        (player as HTMLAudioElement)?.play();
+    }
 
-    const pauseSong = () => {
-        console.log('song is paused');
-    };
+    const pauseSong = (buttonPressed: string) => {
+        setActiveButton(buttonPressed);
+        (player as HTMLAudioElement)?.pause();
+    }
+
+    const previousSong = (buttonPressed: string) => {
+        setActiveButton(buttonPressed);
+        let currentSongIndex = songIndex!;
+        const newIndex = currentSongIndex - 1;
+        const prevSrc = songs && songs[newIndex];
+        setCurrentSong(prevSrc);
+        setSongIndex(newIndex);
+    }
+
+    const nextSong = (buttonPressed: string) => {
+        setActiveButton(buttonPressed);
+        let currentSongIndex = songIndex!;
+        const newIndex = currentSongIndex + 1;
+        const nextSrc = songs && songs[newIndex];
+        setCurrentSong(nextSrc);
+        setSongIndex(newIndex);
+    }
     
     const hidePlayer = () => {
-        console.log('player is hidden');
-    };
+        setToggleSidebar(false);
+        setTogglePlayer(false);
+    }
 
     return (
-        <div id="audioPlayer_wrap">
-            <audio id="music" controls>
-                <source src={ currentSong?.url } type="audio/mpeg" />
-            </audio>
+        <div className="audioPlayer_container">
             <div id="audioPlayer">
-                <img className="album_art" src={ currentSong?.albumImageSource } alt="" />
+                <img className="album_art" src={ currentSong?.album?.images[0]?.url } alt="" />
                 <div id="song_name_display">
-                    <p>{ currentSong?.name }</p>
-                    <p className='album'>{ currentSong?.albumName }</p>
+                    {
+                        playerIssue ? 'Something went wrong. Please try again.' :
+                        (<React.Fragment>
+                            <p className='artist_name'>{ currentSong?.name }</p>
+                            <p className='album'>{ currentSong?.album?.name }</p>
+                        </React.Fragment>)
+                    }
                 </div>
                 <div id="controls_wrap">
                     <div id="audio_controls">
-                        <i className='fa fa-play control_button' onClick={replaySong}></i>
-                        <i className='fa fa-pause control_button' onClick={pauseSong}></i>
+                        <FontAwesomeIcon 
+                            icon={faStepBackward} 
+                            id="previous_song" 
+                            role="button"
+                            className={activeButton === 'previous_song' ? 'active_player_button' : ''} 
+                            onClick={() => previousSong('previous_song')} />
+                        <FontAwesomeIcon 
+                            icon={faPlay} 
+                            id="play" 
+                            role="button"
+                            className={activeButton === 'play' ? 'active_player_button' : ''} 
+                            onClick={() => replaySong('play')} />
+                        <FontAwesomeIcon 
+                            icon={faPause} 
+                            id="pause" 
+                            role="button"
+                            className={activeButton === 'pause' ? 'active_player_button' : ''} 
+                            onClick={() => pauseSong('pause')} />
+                        <FontAwesomeIcon 
+                            icon={faStepForward} 
+                            id="next_song" 
+                            role="button"
+                            className={activeButton === 'next_song' ? 'active_player_button' : ''} 
+                            onClick={() => nextSong('next_song')} />
                     </div>
                 </div>
                 <button id="mobile_back" onClick={hidePlayer}>

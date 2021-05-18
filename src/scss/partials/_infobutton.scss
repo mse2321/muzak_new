@@ -1,0 +1,20 @@
+.info {
+    svg {
+        background: none;
+        border: none;
+        font-size: $base-font-unit * 3;
+        color: $action;
+
+        &:hover { color: $primary; }
+    }
+}
+
+.fa-info-circle { 
+	position: absolute; 
+	font-size: 3em; 
+	cursor: pointer; 
+	top: 0.7em; 
+	right: 0.7em; 
+	z-index: 6000; 
+	transition: 1s;
+}

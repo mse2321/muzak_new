@@ -1,12 +1,11 @@
 footer {
-    font-size: $base-unit;
+    font-size: $base-font-unit;
     text-align: center;
-    clear: both; 
-	position: fixed; 
+	position: relative;
 	bottom: 0; 
 	color: #ccc; 
-	padding: 10px 0 10px 16px; 
-	left: 0; 
-	background-color: #263238; 
+	padding: $base-unit * 0.4; 
 	width: 100%; 
+
+	a { margin-left: $base-unit * 0.3; }
 }

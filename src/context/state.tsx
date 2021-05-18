@@ -1,107 +1,180 @@
 import React, { useState, useContext, createContext } from "react";
 import axios from 'axios';
-import { DefaultContext } from '../interfaces/';
+import * as secrets from '../secrets.json';
+import _ from 'lodash';
+import { CurrentSong, IDefaultContext } from '../interfaces/'
 
-const StateContext = createContext<DefaultContext>(undefined!);
+const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
+
 const useStateContext = () => useContext(StateContext);
 
 const StateProvider = ({ children }: any) => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [currentArtist, setCurrentArtist] = useState({});
-    const [songs, setSongs] = useState({});
-
-    const [currentArtistDiscogs, setCurrentArtistDiscogs] = useState({});
+    const [totalArtists, setTotalArtists] = useState([]);
+    const [songs, setSongs] = useState([]);
     const [artistDetails, setArtistDetails] = useState({});
-
     const [currentSong, setCurrentSong] = useState({});
+    const [token, setToken] = useState('');
+    const [togglePlayer, setTogglePlayer] = useState(false);
+    const [toggleSearchResults, setToggleSearchResults] = useState(false);
+    const [toggleProfile, setToggleProfile] = useState(false);
+    const [toggleSearchResultsView, setToggleSearchResultsView] = useState(false);
+    const [toggleSidebar, setToggleSidebar] = useState(false);
+    const [songIndex, setSongIndex] = useState(null);
+    const [displayNoTracksMessage, setDisplayNoTracksMessage] = useState(true);
+    const [showErrorView, setShowErrorView] = useState(false);
 
     // Spotify APIs
-    const getArtist = async (artistName: string) => {
-        const apiItems = { 
-            url: "https://api.spotify.com/v1/search/",
-            params: {
-                q: artistName,
-                type: "artist"
-            }
+    const getAuth = async () => {
+        const auth = 'Basic ' + secrets.spotify.secret;
+
+        const headers = { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': auth,
+            'withCredentials': true
         };
 
+        const url = "https://accounts.spotify.com/api/token";
+        const body = 'grant_type=client_credentials';
+
         try {
-            const response = await axios.get(apiItems.url + apiItems.params);
-            setCurrentArtist(response);
+            const response = await axios.post(url, body, { headers });
+            setToken(response.data.access_token);
+            setShowErrorView(false);
         } catch (error) {
+            setShowErrorView(true);
             console.error(error);
         }
     };
 
-    const getSongs = async (artistId: string) => {
-        const apiItems = { 
-            url: "https://api.spotify.com/v1/artists/",
-            params: {
-                artist_id: artistId,
-                type: "/top-tracks?country=US"
-            }
+    const getArtist = async (artistName: string) => {
+        const auth = 'Bearer ' + token;
+
+        const headers = { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': auth,
+            'withCredentials': true
         };
 
-        try {
-            const response = await axios.get(apiItems.url + apiItems.params);
-            setSongs(response);
-        } catch (error) {
-            console.error(error);
+
+        const apiItems = { 
+            url: "https://api.spotify.com/v1/search?",
+            q: artistName,
+            type: "artist"
+        };
+
+        const apiParams = apiItems.url 
+        + 'q=' 
+        + apiItems.q
+        + '&type=' 
+        + apiItems.type;
+
+        if(!_.isEmpty(token)) {
+            try {
+                const response = await axios.get(apiParams, { headers });
+                setTotalArtists(response.data.artists.items);
+                setShowErrorView(false);
+            } catch (error) {
+                setShowErrorView(true);
+                console.error(error);
+            }
+        } else {
+            console.log('problem with token for search');
+        }
+    };
+
+    const getSongs = async (id: string) => {
+        const auth = 'Bearer ' + token;
+
+        const headers = { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': auth,
+            'withCredentials': true
+        };
+
+        const url = 'https://api.spotify.com/v1/artists/';
+
+        const apiParams = url + id + '/top-tracks?market=US';
+
+        if(!_.isEmpty(token) && id !== 'none') {
+            try {
+                const response = await axios.get(apiParams, { headers });
+                const allTracks = response.data.tracks;
+
+                // need to only include tracks with preview_urls
+                const tracksWithPreviews = allTracks.filter((track: CurrentSong) => !_.isEmpty(track?.preview_url));
+
+                setSongs(tracksWithPreviews);
+                setShowErrorView(false);
+            } catch (error) {
+                setShowErrorView(true);
+                console.error(error);
+            }
+        } else {
+            console.log('problem with token for songs');
         }
     };
 
     // Discogs APIs
-    const getArtistDiscogs = async (artistName: string) => {
-        // TODO - need to move this elsewhere
-        const secret_key = "OcuHHDfOEJrlKlNaLVAFCjBLzQqPfmvq";
-        const apiItems = { 
-            url: "https://api.discogs.com//database/search?",
-            params: {
-                q: artistName,
-                type: "artist",
-                key: "FrEJfCEeKbnHxmsEAvJA",
-                secret: secret_key
-            }
-        };
+    const getArtistDetails = async (id: string) => {
+        const url = "https://api.discogs.com/artists/";
+        const endPoint = url + id;
 
         try {
-            const response = await axios.get(apiItems.url + apiItems.params);
-            setCurrentArtistDiscogs(response);
+            const response = await axios.get(endPoint);
+            setArtistDetails(response.data);
+            setShowErrorView(false);
         } catch (error) {
-            console.error(error);
-        }
-    }
-
-    const getArtistDetails = async (artistId: string) => {
-        const apiItems = { 
-            url: "https://api.discogs.com/artists/",
-            params: {
-                artist_id: artistId
-            }
-        };
-
-        try {
-            const response = await axios.get(apiItems.url + apiItems.params);
-            setArtistDetails(response);
-        } catch (error) {
+            setShowErrorView(true);
             console.error(error);
         }
     };
 
+    const getArtistDiscogs = async (artistName: string) => {
+        const url = "https://api.discogs.com/database/search?";
+        const params = 'q=' + artistName + '&type=artist&token=' + secrets.discogs.token;
+        const endPoint = url + params;
 
-    const defaultContext = {
-        searchTerm,
-        currentArtist,
+        try {
+            const response = await axios.get(endPoint);
+            const artistId = response?.data.results[0].id;
+            getArtistDetails(artistId.toString());
+            setShowErrorView(false);
+        } catch (error) {
+            setShowErrorView(true);
+            console.error(error);
+        }
+    }
+
+    const defaultContext: IDefaultContext = {
         songs,
-        currentArtistDiscogs,
         artistDetails,
         currentSong,
-        setSearchTerm,
+        totalArtists,
+        togglePlayer,
+        toggleSearchResults,
+        toggleProfile,
+        toggleSearchResultsView,
+        toggleSidebar,
+        songIndex,
+        displayNoTracksMessage,
+        showErrorView,
+        getAuth,
         getArtist,
         getSongs,
         getArtistDiscogs,
-        getArtistDetails,
-        setCurrentSong
+        setCurrentSong,
+        setTogglePlayer,
+        setToggleSearchResults,
+        setToggleProfile,
+        setToggleSearchResultsView,
+        setTotalArtists,
+        setToggleSidebar,
+        setSongIndex,
+        setDisplayNoTracksMessage,
+        setShowErrorView
     };
 
     return (
@@ -111,4 +184,4 @@ const StateProvider = ({ children }: any) => {
     )
 };
 
-export { StateProvider, useStateContext };
+export { StateProvider, useStateContext, StateContext };

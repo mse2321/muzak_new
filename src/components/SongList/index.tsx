@@ -7,18 +7,18 @@ const SongList = (props: any) => {
     const heading = 'Top Songs';
 
     return (
-        <section className="col-xs-12 col-md-8 searchContainer">
-			<div id="results">
+        <div id="song_list">
+            <React.Fragment>
                 <h2>{heading}</h2>
-				<ul>
+                <ul>
                     {
-                        songs?.map((song: any) => {
-                            return <Song songData={song} />
+                        songs?.map((song: any, index: number) => {
+                            return <Song key={index} songData={song} index={index}/>
                         })
                     }
-				</ul>
-			</div>
-		</section>
+                </ul>
+            </React.Fragment>
+        </div>
     );
 }
 

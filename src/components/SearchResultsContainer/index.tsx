@@ -1,21 +1,23 @@
 import React from 'react';
-import MultipleArtists from '../MultipleArtists'
-import SongList from '../SongList'
+import SearchResults from '../SearchResults/';
+import SongList from '../SongList';
 import { useStateContext } from '../../context/state';
+import _ from 'lodash';
 
-const SearchResultsContainer = (props: any) => {
-    const { songs } = useStateContext();
-
-    const heading = 'Top Songs';
-
-    const multipleResultsFindArtist = () => {
-        //
-    }
+const SearchResultsContainer = () => {
+    const { 
+        songs, 
+        toggleSearchResultsView
+    } = useStateContext();
 
     return (
-        <section className="col-xs-12 col-md-8 searchContainer">
-            <SongList songs={songs ? songs : {}} />
-			<MultipleArtists />
+        <section className="searchContainer">
+            {
+                toggleSearchResultsView && <SearchResults />
+            }
+            {
+                !_.isEmpty(songs) && <SongList songs={songs ? songs : []} />
+            }
 		</section>
     );
 }

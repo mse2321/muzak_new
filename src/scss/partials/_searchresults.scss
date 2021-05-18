@@ -1,0 +1,27 @@
+#search_results { 
+	background-color: black; 
+	color: white; 
+	position: fixed; 
+	left: 0; 
+	bottom: 0; 
+	top: 0; 
+	padding: 70px 40px 40px 40px; 
+	z-index: 5000; 
+	overflow-y: auto; 
+	transition: 1s;
+    width: 35%;
+
+    li { 
+        cursor: pointer; 
+        font-size: 20px; 
+        color: #26C6DA; 
+        margin-bottom: $base-unit * 0.8;
+
+        &:hover { color: $primary; }
+    }
+
+    p {
+        font-size: $base-unit;
+        margin-bottom: $base-unit * 2;
+    }
+}

@@ -1,21 +1,30 @@
 import React from 'react';
-import Container from './Container/';
+import ContentContainer from './ContentContainer';
 import SearchBar from './SearchBar/';
-import AudioPlayer from './AudioPlayer/';
-import Profile from './Profile/';
+import Footer from './Footer/';
+import Sidebar from './Sidebar/';
 import SearchResultsContainer from "./SearchResultsContainer/";
-import { StateProvider } from '../context/state'
+import { StateProvider } from '../context/state';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const App = () => {
     return (
         <React.StrictMode>
             <StateProvider>
-                <Container>
-                    <SearchBar />
-                    <SearchResultsContainer />
+                <Container fluid>
+                    <Row id="content_wrap">
+                        <Col xs={12} md={7} lg={7} xl={7}>
+                            <ContentContainer>
+                                <SearchBar />
+                                <SearchResultsContainer />
+                            </ContentContainer>
+                        </Col>
+                        <Col className="sidebar_container" xs={12} md={5} lg={5} xl={5}>
+                            <Sidebar />
+                        </Col>
+                        <Footer />
+                    </Row>
                 </Container>
-                <AudioPlayer />
-                <Profile />
             </StateProvider>
         </React.StrictMode>
     )
