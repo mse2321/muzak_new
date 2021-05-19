@@ -2,7 +2,6 @@
   "name": "muzak_new",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mse2321.github.io/muzak_new/",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
