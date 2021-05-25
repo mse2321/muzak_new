@@ -28,10 +28,8 @@ const StateProvider = ({ children }: any) => {
         const auth = 'Basic ' + secrets.spotify.secret;
 
         const headers = { 
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': auth,
-            'withCredentials': true
+            'Authorization': auth
         };
 
         const url = "https://accounts.spotify.com/api/token";
@@ -51,10 +49,8 @@ const StateProvider = ({ children }: any) => {
         const auth = 'Bearer ' + token;
 
         const headers = { 
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': auth,
-            'withCredentials': true
+            'Authorization': auth
         };
 
 
@@ -88,11 +84,8 @@ const StateProvider = ({ children }: any) => {
         const auth = 'Bearer ' + token;
 
         const headers = { 
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': auth,
-            'withCredentials': true
-        };
+            'Authorization': auth        };
 
         const url = 'https://api.spotify.com/v1/artists/';
 
