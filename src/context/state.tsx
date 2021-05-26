@@ -1,8 +1,11 @@
 import React, { useState, useContext, createContext } from "react";
 import axios from 'axios';
-import * as secrets from '../secrets.json';
+//import * as secrets from '../secrets.json';
 import _ from 'lodash';
-import { CurrentSong, IDefaultContext } from '../interfaces/'
+import { CurrentSong, IDefaultContext } from '../interfaces/';
+
+const apiKeyDiscogs = process.env.REACT_APP_APIKeyDiscogs;
+const apiSecretSpotify = process.env.REACT_APP_APISecretSpotify
 
 const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
 
@@ -25,7 +28,7 @@ const StateProvider = ({ children }: any) => {
 
     // Spotify APIs
     const getAuth = async () => {
-        const auth = 'Basic ' + secrets.spotify.secret;
+        const auth = 'Basic ' + apiSecretSpotify;
 
         const headers = { 
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -127,7 +130,7 @@ const StateProvider = ({ children }: any) => {
 
     const getArtistDiscogs = async (artistName: string) => {
         const url = "https://api.discogs.com/database/search?";
-        const params = 'q=' + artistName + '&type=artist&token=' + secrets.discogs.token;
+        const params = 'q=' + artistName + '&type=artist&token=' + apiKeyDiscogs;
         const endPoint = url + params;
 
         try {
