@@ -4,8 +4,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import { CurrentSong, IDefaultContext } from '../interfaces/';
 
-const apiKeyDiscogs = process.env.REACT_APP_APIKeyDiscogs;
-const apiSecretSpotify = process.env.REACT_APP_APISecretSpotify
+const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
+const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
 
 const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
 
