@@ -1,14 +1,10 @@
 import React, { useState, useContext, createContext } from "react";
 import axios from 'axios';
-//import * as secrets from '../secrets.json';
 import _ from 'lodash';
 import { CurrentSong, IDefaultContext } from '../interfaces/';
 
 const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
 const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
-
-console.log(apiSecretSpotify);
-console.log(apiKeyDiscogs);
 
 const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
 
