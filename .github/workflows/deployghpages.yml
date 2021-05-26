@@ -21,7 +21,7 @@ jobs:
           REACT_APP_APISecret: ${{ secrets.REACT_APP_APISecret }}
 
       - name: Deploy 🚀
-        uses: mse2321/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
