@@ -7,6 +7,9 @@ import { CurrentSong, IDefaultContext } from '../interfaces/';
 const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
 const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
 
+console.log(apiSecretSpotify);
+console.log(apiKeyDiscogs);
+
 const StateContext = createContext<IDefaultContext>({} as IDefaultContext);
 
 const useStateContext = () => useContext(StateContext);
