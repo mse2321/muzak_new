@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/muzak_new/static/css/main.79d2f7d8.chunk.css",
-    "main.js": "/muzak_new/static/js/main.7cc6a944.chunk.js",
-    "main.js.map": "/muzak_new/static/js/main.7cc6a944.chunk.js.map",
+    "main.css": "/muzak_new/static/css/main.d1e8a6f2.chunk.css",
+    "main.js": "/muzak_new/static/js/main.12216554.chunk.js",
+    "main.js.map": "/muzak_new/static/js/main.12216554.chunk.js.map",
     "runtime-main.js": "/muzak_new/static/js/runtime-main.3a2e45fd.js",
     "runtime-main.js.map": "/muzak_new/static/js/runtime-main.3a2e45fd.js.map",
     "static/js/2.2a1fd22f.chunk.js": "/muzak_new/static/js/2.2a1fd22f.chunk.js",
     "static/js/2.2a1fd22f.chunk.js.map": "/muzak_new/static/js/2.2a1fd22f.chunk.js.map",
     "index.html": "/muzak_new/index.html",
-    "static/css/main.79d2f7d8.chunk.css.map": "/muzak_new/static/css/main.79d2f7d8.chunk.css.map",
+    "static/css/main.d1e8a6f2.chunk.css.map": "/muzak_new/static/css/main.d1e8a6f2.chunk.css.map",
     "static/js/2.2a1fd22f.chunk.js.LICENSE.txt": "/muzak_new/static/js/2.2a1fd22f.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/muzak_new/static/media/music_bg_fotolia.d7f1dca3.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.3a2e45fd.js",
     "static/js/2.2a1fd22f.chunk.js",
-    "static/css/main.79d2f7d8.chunk.css",
-    "static/js/main.7cc6a944.chunk.js"
+    "static/css/main.d1e8a6f2.chunk.css",
+    "static/js/main.12216554.chunk.js"
   ]
 }
