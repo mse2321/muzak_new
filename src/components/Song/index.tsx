@@ -3,7 +3,6 @@ import { useStateContext } from '../../context/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { Row, Col } from 'react-bootstrap';
-import _ from 'lodash';
 
 const Song = (props: any) => {
     const { 

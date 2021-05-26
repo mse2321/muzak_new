@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useStateContext } from '../../context/state';
 import { Button, FormControl, InputGroup  } from 'react-bootstrap';
-import _ from 'lodash';
 
 const SearchBar = () => {
     const { 

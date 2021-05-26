@@ -12,7 +12,7 @@ const ContentContainer = (props: any) => {
 
     useEffect(() => {
         getAuth();
-    }, []);
+    }, [getAuth]);
 
     return (
         <React.Fragment>
