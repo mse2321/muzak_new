@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
-          npm run deploy
+          npm react-scripts build
         env:
           REACT_APP_APIKey: ${{ secrets.REACT_APP_APIKey }}
           REACT_APP_APISecret: ${{ secrets.REACT_APP_APISecret }}
