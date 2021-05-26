@@ -18,7 +18,7 @@ jobs:
           npm run-script build
         env:
           REACT_APP_APIKEYDISCOGS: ${{ secrets.REACT_APP_APIKEYDISCOGS }}
-          REACT_APP_APISECRETSPOTIFY: ${{ secrets.REACT_APP_APISecret }}
+          REACT_APP_APISECRETSPOTIFY: ${{ secrets.REACT_APP_APISECRETSPOTIFY }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
