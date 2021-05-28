@@ -31,7 +31,7 @@ export interface CurrentSong {
     name?: string
 }
 
-export interface IDefaultContext {
+export interface IState {
     searchTerm?: string,
     songs?: Array<CurrentSong>,
     totalArtists?: Array<Artist>,
@@ -39,24 +39,22 @@ export interface IDefaultContext {
     currentSong?: CurrentSong,
     songIndex?: number | null,
     displayNoTracksMessage? : boolean,
+    token?: string,
     showErrorView: boolean,
-    getAuth: Function,
-    getArtist: Function,
-    getSongs: Function,
-    getArtistDiscogs: Function,
-    setTogglePlayer: Function,
-    setToggleSearchResults: Function,
-    setToggleProfile: Function,
-    setToggleSearchResultsView: Function,
-    setTotalArtists: Function,
-    setToggleSidebar: Function,
-    setCurrentSong: Function,
-    setSongIndex: Function,
-    setShowErrorView: Function,
-    setDisplayNoTracksMessage: Function,
     togglePlayer: boolean,
     toggleSearchResults: boolean,
     toggleProfile: boolean,
     toggleSearchResultsView: boolean,
-    toggleSidebar: boolean
+    toggleSidebar: boolean,
 }
+
+export interface IStateReducer {
+    state: any,
+    dispatch: Function
+}
+
+export interface IAction {
+    type: string,
+    payload?: any
+}
+

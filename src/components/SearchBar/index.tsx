@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import { useStateContext } from '../../context/state';
 import { Button, FormControl, InputGroup  } from 'react-bootstrap';
+import * as actions from '../../actions/actions';
+import * as apis from '../../apis/Apis';
 
 const SearchBar = () => {
-    const { 
-        getArtist,
-        setToggleSearchResultsView,
-        setDisplayNoTracksMessage,
-        displayNoTracksMessage,
-        setShowErrorView
-    } = useStateContext();
+    const { state, dispatch } = useStateContext();
 
     const [currentSearch, changeCurrentSearch] = useState<String>('');
     
     const updateSearchInput = (e: any) => {
-        setShowErrorView(false);
+        dispatch(actions.toggleErrorView(false));
         const searchValue = e.target.value;
         changeCurrentSearch(searchValue);
     }
 
     const submitSearch = () => {
-        displayNoTracksMessage && setDisplayNoTracksMessage(false);
-        getArtist(currentSearch);
-        setToggleSearchResultsView(true);
+        state.displayNoTracksMessage && dispatch(actions.toggleDisplayNoTracksMessage(false));
+        apis.getArtist(currentSearch, state, dispatch);
+        dispatch(actions.toggleSearchResultsView(true));
     }
 
     return (

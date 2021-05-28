@@ -5,18 +5,15 @@ import { useStateContext } from '../../context/state';
 import _ from 'lodash';
 
 const SearchResultsContainer = () => {
-    const { 
-        songs, 
-        toggleSearchResultsView
-    } = useStateContext();
+    const { state } = useStateContext();
 
     return (
         <section className="searchContainer">
             {
-                toggleSearchResultsView && <SearchResults />
+                state.toggleSearchResultsView && <SearchResults />
             }
             {
-                !_.isEmpty(songs) && <SongList songs={songs ? songs : []} />
+                !_.isEmpty(state.songs) && <SongList songs={state.songs ? state.songs : []} />
             }
 		</section>
     );

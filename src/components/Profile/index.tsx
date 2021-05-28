@@ -2,17 +2,13 @@ import React from 'react';
 import { useStateContext } from '../../context/state';
 import { Button } from 'react-bootstrap';
 import _ from 'lodash';
+import * as actions from '../../actions/actions';
 
 const Profile = () => {
-	const { 
-		artistDetails,
-		setToggleProfile,
-		setToggleSidebar
-	} = useStateContext();
+	const { state, dispatch } = useStateContext();
 
 	const toggleHandler = () => {
-		setToggleSidebar(false);
-		setToggleProfile(false);
+		dispatch(actions.toggleProfile(false));
 	}
 
     return (
@@ -22,11 +18,11 @@ const Profile = () => {
 			</div>
 			<div className="content">
 				{
-					!_.isEmpty(artistDetails) ? (<React.Fragment>
-						<h3>{ artistDetails?.name }</h3>
-						<p>{ artistDetails?.profile}</p>
-						<a href={artistDetails?.uri} target="_blank" rel="noreferrer">
-							{ 'Check out the rest of the ' + artistDetails?.name + ' profile from Discogs' }
+					!_.isEmpty(state.artistDetails) ? (<React.Fragment>
+						<h3>{ state.artistDetails?.name }</h3>
+						<p>{ state.artistDetails?.profile}</p>
+						<a href={state.artistDetails?.uri} target="_blank" rel="noreferrer">
+							{ 'Check out the rest of the ' + state.artistDetails?.name + ' profile from Discogs' }
 						</a>
 						</React.Fragment>
 					) : 'Nothing to see here until you search for something'

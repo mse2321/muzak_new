@@ -3,6 +3,7 @@ import { useStateContext } from '../../context/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { Row, Col } from 'react-bootstrap';
+import * as actions from '../../actions/actions';
 
 const Song = (props: any) => {
     const { 
@@ -10,21 +11,15 @@ const Song = (props: any) => {
         index 
     } = props;
 
-    const { 
-        setCurrentSong, 
-        setTogglePlayer,
-        setToggleSidebar,
-        setSongIndex,
-        setDisplayNoTracksMessage
-    } = useStateContext();
+    const { dispatch } = useStateContext();
 
     const playSongs = () => {
         // sends the songData to the AudioPlayer component to play
-        setCurrentSong(songData);
-        setToggleSidebar(true);
-        setSongIndex(index);
-        setDisplayNoTracksMessage(true);
-        setTogglePlayer(true);
+        dispatch(actions.setCurrentSong(songData));
+        dispatch(actions.toggleSidebar(true));
+        dispatch(actions.setSongIndex(index));
+        dispatch(actions.toggleDisplayNoTracksMessage(false));
+        dispatch(actions.togglePlayer(true));
     }
 
     return (

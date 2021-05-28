@@ -2,23 +2,21 @@ import React, { useEffect } from 'react';
 import ErrorView from '../ErrorView';
 import Header from '../Header';
 import { useStateContext } from '../../context/state';
+import * as apis from '../../apis/Apis';
 
 const ContentContainer = (props: any) => {
     const { children } = props;
-    const { 
-        getAuth, 
-        showErrorView 
-    } = useStateContext();
+    const { state, dispatch } = useStateContext();
 
     useEffect(() => {
-        getAuth();
-    }, [getAuth]);
+        apis.getAuth(dispatch);
+    }, [dispatch])
 
     return (
         <React.Fragment>
             <Header />
             { children }
-            { showErrorView && <ErrorView />}
+            { state.toggleErrorView && <ErrorView />}
         </React.Fragment>
     )
 }

@@ -3,7 +3,7 @@ import InfoButton from '../InfoButton/';
 import { useStateContext } from '../../context/state';
 
 const Header = () => {
-    const { currentSong } = useStateContext();
+    const { state } = useStateContext();
 
     const heading = 'Muzak';
     const introMessage1 = 'Listen to available preview tracks from your favorite artists using ';
@@ -21,7 +21,7 @@ const Header = () => {
             </p>
             <InfoButton />
             {/* Putting the audio tag here in order to persist outside of the sidebar */}
-            <audio id="music" src={ currentSong?.preview_url } />
+            <audio id="music" src={ state.currentSong?.preview_url } />
         </header>
 }
 

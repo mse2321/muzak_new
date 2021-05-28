@@ -3,26 +3,20 @@ import { useStateContext } from '../../context/state';
 import AudioPlayer from '../AudioPlayer/';
 import Profile from '../Profile/';
 import { Button } from 'react-bootstrap';
+import * as actions from '../../actions/actions';
 
 const Sidebar = () => {
-    const { 
-		togglePlayer, 
-        toggleProfile,
-        toggleSidebar,
-        currentSong,
-        displayNoTracksMessage,
-        setDisplayNoTracksMessage
-	} = useStateContext();
+    const {state, dispatch} = useStateContext();
 
     const closeNoTrackMessageHandler = () => {
-		setDisplayNoTracksMessage(false);
+		dispatch(actions.toggleDisplayNoTracksMessage(false));
 	}
 
     return (
-        <aside id="album_player_section" className={toggleSidebar ? '' : 'hidden'}>
+        <aside id="album_player_section" className={state.toggleSidebar ? '' : 'hidden'}>
             { 
-                currentSong?.preview_url ? togglePlayer && <AudioPlayer /> :
-                <div className={"no_tracks" + (!displayNoTracksMessage ? ' hidden' : '')}>
+                state.currentSong?.preview_url ? state.togglePlayer && <AudioPlayer /> :
+                <div className={"no_tracks" + (!state.displayNoTracksMessage ? ' hidden' : '')}>
                     <div className="close">
                         <Button onClick={() => closeNoTrackMessageHandler()}>X</Button>
                     </div>
@@ -30,7 +24,7 @@ const Sidebar = () => {
                     Please try again, check out their profile or select a new artist.
                 </div>
             }
-            { toggleProfile && <Profile /> }
+            { state.toggleProfile && <Profile /> }
         </aside>
     );
 }

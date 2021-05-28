@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../../context/state';
+import * as actions from '../../actions/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
 
 const AudioPlayer = () => {
-    const { 
-        currentSong,
-        setTogglePlayer,
-        setToggleSidebar,
-        songs,
-        songIndex,
-        setSongIndex,
-        setCurrentSong
-    } = useStateContext();
+    const { state, dispatch } = useStateContext();
 
     const player = document.getElementById('music');
 
@@ -20,8 +13,8 @@ const AudioPlayer = () => {
     const [playerIssue, setPlayerIssue] = useState<boolean>(false);
 
     useEffect(() => {
-        player?.setAttribute('src', (currentSong?.preview_url as string));
-    }, [player, currentSong]);
+        player?.setAttribute('src', (state.currentSong?.preview_url as string));
+    }, [player, state.currentSong]);
 
     const actionMessage = 'Back to results';
 
@@ -38,37 +31,37 @@ const AudioPlayer = () => {
 
     const previousSong = (buttonPressed: string) => {
         setActiveButton(buttonPressed);
-        let currentSongIndex = songIndex!;
+        let currentSongIndex = state.songIndex!;
         const newIndex = currentSongIndex - 1;
-        const prevSrc = songs && songs[newIndex];
-        setCurrentSong(prevSrc);
-        setSongIndex(newIndex);
+        const prevSrc = state.songs && state.songs[newIndex];
+        dispatch(actions.setCurrentSong(prevSrc));
+        dispatch(actions.setSongIndex(newIndex));
     }
 
     const nextSong = (buttonPressed: string) => {
         setActiveButton(buttonPressed);
-        let currentSongIndex = songIndex!;
+        let currentSongIndex = state.songIndex!;
         const newIndex = currentSongIndex + 1;
-        const nextSrc = songs && songs[newIndex];
-        setCurrentSong(nextSrc);
-        setSongIndex(newIndex);
+        const nextSrc = state.songs && state.songs[newIndex];
+        dispatch(actions.setCurrentSong(nextSrc));
+        dispatch(actions.setSongIndex(newIndex));
     }
     
     const hidePlayer = () => {
-        setToggleSidebar(false);
-        setTogglePlayer(false);
+        dispatch(actions.toggleSidebar(false));
+        dispatch(actions.togglePlayer(false));
     }
 
     return (
         <div className="audioPlayer_container">
             <div id="audioPlayer">
-                <img className="album_art" src={ currentSong?.album?.images[0]?.url } alt="" />
+                <img className="album_art" src={ state.currentSong?.album?.images[0]?.url } alt="" />
                 <div id="song_name_display">
                     {
                         playerIssue ? 'Something went wrong. Please try again.' :
                         (<React.Fragment>
-                            <p className='artist_name'>{ currentSong?.name }</p>
-                            <p className='album'>{ currentSong?.album?.name }</p>
+                            <p className='artist_name'>{ state.currentSong?.name }</p>
+                            <p className='album'>{ state.currentSong?.album?.name }</p>
                         </React.Fragment>)
                     }
                 </div>

@@ -19,13 +19,33 @@
 }
 
 #artist_info { 
+	background-color: black; 
+	color: white; 
+	position: fixed; 
+	right: 0; 
+	bottom: $base-unit * 4; 
+	top: 0; 
+	padding: $base-unit * 2.2 $base-unit * 3 $base-unit $base-unit * 2; 
+	z-index: 9999; 
+	transition: 1s;
     position: absolute; 
     width: 35%;
     height: 100vh;
     font-size: $base-unit;
     overflow-y: auto;
 
-    h3      { margin-bottom: $base-unit * 2; }
+	h3 { 
+		font-size: $base-font-unit * 3; 
+		font-weight: bold; 
+        margin-bottom: $base-unit * 2;
+	}
+
+	li      { margin: $base-unit 0; }
+
+	img { 
+		margin: $base-unit * 3 0 $base-unit * 2 0; 
+		border-radius: 100%; 
+	}
 
     p       { margin-bottom: $base-unit; }
 
