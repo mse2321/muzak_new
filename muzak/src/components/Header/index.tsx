@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoButton from '../InfoButton/';
+import InfoButton from '../InfoButton';
 import { useStateContext } from '../../context/state';
 
 const Header = () => {

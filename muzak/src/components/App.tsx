@@ -1,9 +1,9 @@
 import React from 'react';
 import ContentContainer from './ContentContainer';
-import SearchBar from './SearchBar/';
-import Footer from './Footer/';
-import Sidebar from './Sidebar/';
-import SearchResultsContainer from "./SearchResultsContainer/";
+import SearchBar from './SearchBar';
+import Footer from './Footer';
+import Sidebar from './Sidebar';
+import SearchResultsContainer from "./SearchResultsContainer";
 import { StateProvider } from '../context/state';
 import { Container, Row, Col } from 'react-bootstrap';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStateContext } from '../../context/state';
-import AudioPlayer from '../AudioPlayer/';
-import Profile from '../Profile/';
+import AudioPlayer from '../AudioPlayer';
+import Profile from '../Profile';
 import { Button } from 'react-bootstrap';
 import * as actions from '../../actions/actions';
 
