@@ -1,7 +1,8 @@
+"use client"
 import React from 'react';
 import { useStateContext } from '../../context/state';
-import AudioPlayer from '../AudioPlayer/';
-import Profile from '../Profile/';
+import AudioPlayer from '../AudioPlayer';
+import Profile from '../Profile';
 import { Button } from 'react-bootstrap';
 import * as actions from '../../actions/actions';
 
@@ -20,7 +21,7 @@ const Sidebar = () => {
                     <div className="close">
                         <Button onClick={() => closeNoTrackMessageHandler()}>X</Button>
                     </div>
-                    Sorry can't find preview tracks available for this artist right now.
+                    Sorry cannot find preview tracks available for this artist right now.
                     Please try again, check out their profile or select a new artist.
                 </div>
             }

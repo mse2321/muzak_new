@@ -1,6 +1,7 @@
+"use client"
 import React, { useState } from 'react';
 import { useStateContext } from '../../context/state';
-import { Button, FormControl, InputGroup  } from 'react-bootstrap';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import * as actions from '../../actions/actions';
 import * as apis from '../../apis/Apis';
 
@@ -29,9 +30,7 @@ const SearchBar = () => {
                 aria-describedby="search"
                 onChange={(e) => updateSearchInput(e)}
             />
-            <InputGroup.Append>
-                <Button type="submit" id="submit" onClick={submitSearch}>Search</Button>
-            </InputGroup.Append>
+            <Button type="submit" id="submit" onClick={submitSearch}>Search</Button>
         </InputGroup>
     );
 }
