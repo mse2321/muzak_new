@@ -5,9 +5,8 @@ import { IState } from '../interfaces';
 import _ from 'lodash';
 
 const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
-//const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
-const apiClient = '8dfc36be7d894e129dbcb997696ad628';
-const apiSecretSpotify = '4ef7126ce4144dadad88b496f3849e00';
+const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
+const apiClient = '';
 
 // Spotify APIs
 export const getAuth = async (dispatch: Function) => {
