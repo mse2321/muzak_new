@@ -12,17 +12,23 @@ const Header = () => {
     const discogs = 'Discogs';
 
     return <header>
-            <h1>{heading}</h1>
-            <p>
-                {introMessage1}
-                <a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer">{spotify}</a>
-                {introMessage2}
-                <a href="https://www.discogs.com/" target="_blank" rel="noopener noreferrer">{discogs}</a>.
-            </p>
-            <InfoButton />
-            {/* Putting the audio tag here in order to persist outside of the sidebar */}
-            <audio id="music" src={ state.currentSong?.preview_url } />
-        </header>
+                <div className="header_container">
+                    <div className="heading_container">
+                        <h1>{heading}</h1>
+                        <p>
+                            {introMessage1}
+                            <a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer">{spotify}</a>
+                            {introMessage2}
+                            <a href="https://www.discogs.com/" target="_blank" rel="noopener noreferrer">{discogs}</a>.
+                        </p>
+                    </div>
+                    <div className="info_container">
+                        <InfoButton />
+                    </div>
+                </div>
+                {/* Putting the audio tag here in order to persist outside of the sidebar */}
+                <audio id="music" src={ state.currentSong?.preview_url } />
+            </header>
 }
 
 export default Header;
