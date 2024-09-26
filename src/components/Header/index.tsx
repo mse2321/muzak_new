@@ -27,9 +27,7 @@ const Header = () => {
                         </Col>
                         {/* either hide the button or gray it out - research what is best for accessibility */}
                         <Col className="info_container">
-                            {
-                                state.searchTerm && <InfoButton />
-                            }
+                            <InfoButton />
                         </Col>
                     </Row>
                 </Container>
