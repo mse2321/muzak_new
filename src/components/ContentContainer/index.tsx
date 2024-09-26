@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useEffect } from 'react';
 import ErrorView from '../ErrorView';
 import { useStateContext } from '../../context/state';

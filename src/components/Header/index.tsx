@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import InfoButton from '../InfoButton';
 import { useStateContext } from '../../context/state';

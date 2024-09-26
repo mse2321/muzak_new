@@ -18,7 +18,7 @@ export const getAuth = async (dispatch: Function) => {
     };
 
     const authOptions = {
-        grant_type: 'client_credentials',
+        grant_type: 'authorization_code',
         json: true
     };
 
