@@ -10,7 +10,7 @@ const useStateContext = () => useContext(StateContext);
 const StateProvider = ({ children }: any) => {
 
     const initialState: IState = {
-        searchTerm: '',
+        searchInput: '',
         songs: [],
         artistDetails: {},
         currentSong: {},

@@ -32,7 +32,7 @@ export interface CurrentSong {
 }
 
 export interface IState {
-    searchTerm?: string,
+    searchInput?: string,
     songs?: Array<CurrentSong>,
     totalArtists?: Array<Artist>,
     artistDetails?: ArtistDetails,

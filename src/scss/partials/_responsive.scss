@@ -1,10 +1,8 @@
-// TODO - set media queries based on bootstrap and have audio player display with blacked-out bg
-
 @media (min-width: 1200px) and (max-width: 1400px) {
 	#audioPlayer { 
 		width: 100%; 
 		background-color: #ccc;
-		border-radius: 1.5rem;
+		border-radius: $base-unit * 1.5;
 		width: 25%; 
 		position: fixed;
 		top: 28%;  
@@ -28,7 +26,7 @@
 	#audioPlayer_wrap 	{ width: 80%; }
 	#audioPlayer { 
 		width: 100%; 
-		border-radius: 1.5rem;
+		border-radius: $base-unit * 1.5;
 		background-color: #ccc; 
 		width: 30%; 
 		position: fixed;
@@ -73,7 +71,7 @@
 		margin: 0 auto;
 		width: 100%; 
 		border: none; 
-		border-top: 5px solid #616161; 
+		border-top: $base-unit * 5 solid #616161; 
 		background-color: #263238; 
 		width: 100%; 
 		position: fixed;
@@ -99,7 +97,7 @@
 	}
 
 	#song_name_display { 
-		padding: 10px; 
+		padding: $base-unit; 
 		margin: $base-unit * 2 0 0 0; 
 	}
 	

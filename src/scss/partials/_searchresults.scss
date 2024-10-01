@@ -5,7 +5,7 @@
 	left: 0; 
 	bottom: 0; 
 	top: 0; 
-	padding: 70px 40px 40px 40px; 
+	padding: $base-unit * 2; 
 	z-index: 5000; 
 	overflow-y: auto; 
 	transition: 1s;
@@ -13,7 +13,7 @@
 
     li { 
         cursor: pointer; 
-        font-size: 20px; 
+        font-size: $base-font-unit * 1.2; 
         color: #26C6DA; 
         margin-bottom: $base-unit * 0.8;
 

@@ -4,9 +4,15 @@ import * as actions from '../actions/actions';
 import { IState } from '../interfaces';
 import _ from 'lodash';
 
+/*
 const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
 const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
 const apiClient = process.env.REACT_APP_APICLIENTID;
+*/
+
+const apiKeyDiscogs = "nwEtfaNGEtDqkaSqlVFvYkvfYlTrfogyCmpgHdIl";
+const apiSecretSpotify = "db3745a3c4df441f9827718e30398062";
+const apiClient = "f8b5f1b3eac6480a806bacaec177cc56";
 
 // Spotify APIs
 export const getAuth = async (dispatch: Function) => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import InfoButton from './index';
+import CloseButton from './index';
 
-it('renders InfoButton component', () => {
-  const { container } = render(<InfoButton />);
+it('renders CloseButton component', () => {
+  const { container } = render(<CloseButton />);
   
   expect(container.querySelector('[class="info"]'));
 });

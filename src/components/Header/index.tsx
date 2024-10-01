@@ -15,7 +15,7 @@ const Header = () => {
 
     return <header>
                 <Container fluid className="header_container">
-                    <Row>
+                    <Row className="flex-column-reverse">
                         <Col xs={12} md={10} lg={10} xl={10} className="heading_container">
                             <h1>{heading}</h1>
                             <p>
@@ -25,9 +25,10 @@ const Header = () => {
                                 <a href="https://www.discogs.com/" target="_blank" rel="noopener noreferrer">{discogs}</a>.
                             </p>
                         </Col>
-                        {/* either hide the button or gray it out - research what is best for accessibility */}
                         <Col className="info_container">
-                            <InfoButton />
+                            {
+                                state.songs.length > 0 && <InfoButton />
+                            }
                         </Col>
                     </Row>
                 </Container>

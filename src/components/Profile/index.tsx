@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStateContext } from '../../context/state';
-import { Button } from 'react-bootstrap';
+import CloseButton from '../CloseButton';
 import _ from 'lodash';
 import * as actions from '../../actions/actions';
 
@@ -13,9 +13,7 @@ const Profile = () => {
 
     return (
 		<div id="artist_info">
-			<div className="close">
-				<Button onClick={() => toggleHandler()}>X</Button>
-			</div>
+			<CloseButton closeAction={toggleHandler}/>
 			<div className="content">
 				{
 					!_.isEmpty(state.artistDetails) ? (<React.Fragment>

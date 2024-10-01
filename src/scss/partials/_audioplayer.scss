@@ -17,18 +17,16 @@
 
 #audioPlayer { 
 	background-color: #ccc; 
-	border: 5px solid #ccc; 
+	border: $base-unit * 0.5 solid #ccc; 
 	color: white; 
 	border-radius: $base-unit * 1.5; 
-	width: 50%; 
+	width: $base-unit * 20; 
 	line-height: $base-unit * 2;
 	transition: 1s;
 	text-align: center; 
 	margin: 0 auto;
 }
 .album_art { 
-	height: 100%; 
-	width: 100%; 
 	background-color: #8E24AA; 
 	border-radius: $base-unit $base-unit 0 0; 
 }
@@ -70,7 +68,7 @@
 	border-radius: 0 0 $base-unit $base-unit; 
 }
 .control_button { 
-	padding: 0 30px; 
+	padding: 0 $base-unit * 3; 
 	color: black; 
 	font-size: $base-unit * 3; 
 	cursor: pointer; 

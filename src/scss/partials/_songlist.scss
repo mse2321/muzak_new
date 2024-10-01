@@ -1,5 +1,5 @@
 .tracks { 
-	border-bottom: 2px solid #666; 
+	border-bottom: $base-unit * 0.1 solid #666; 
 	font-size: $base-font-unit * 1.1;
 	padding: $base-unit * 0.4 0 $base-unit * 0.4 $base-unit * 0.9;
 	display: flex;
@@ -7,10 +7,10 @@
     align-items: center;
 }
 #song_list { 
-	margin-bottom: 60px;
+	margin-bottom: $base-unit * 6;
 	transition: 1s;
 
-	ul { border-top: 2px solid #666; }
+	ul { border-top: $base-unit * 0.1 solid #666; }
 }
 
 .fa-circle-play { 
