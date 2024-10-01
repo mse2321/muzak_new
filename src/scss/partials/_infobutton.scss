@@ -1,11 +1,21 @@
+%reset {
+    background: none;
+    border: none;
+}
+
 .info {
+    @extend %reset;
+
     svg {
-        background: none;
-        border: none;
+        @extend %reset;
         font-size: $base-font-unit * 3;
         color: $action;
 
         &:hover { color: $primary; }
+    }
+
+    &:disabled { 
+        visibility: hidden;
     }
 }
 

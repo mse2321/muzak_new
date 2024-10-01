@@ -14,9 +14,9 @@ const InfoButton = () => {
     }
 
     return (
-        <div className="info">
+        <button className="info">
             <FontAwesomeIcon type="button" icon={faInfoCircle} onClick={() => toggleHandler()} />
-		</div>
+		</button>
     );
 }
 

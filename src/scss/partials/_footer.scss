@@ -8,4 +8,8 @@ footer {
 	width: 100%; 
 
 	a { margin-left: $base-unit * 0.3; }
+
+	@media (max-width: 768px) {
+        max-height: $base-unit * 3;
+    }
 }

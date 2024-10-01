@@ -1,5 +1,7 @@
+"use client"
+
 import React from 'react';
-import SearchResults from '../SearchResults/';
+import SearchResults from '../SearchResults';
 import SongList from '../SongList';
 import { useStateContext } from '../../context/state';
 import _ from 'lodash';

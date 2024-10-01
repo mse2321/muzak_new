@@ -1,9 +1,16 @@
 header {
     padding-top: $base-unit * 2;
+    margin-bottom: $base-unit * 2;
+
+    @media (max-width: 768px) {
+        margin-bottom: 0;
+        max-height: $base-unit * 0.2;
+    }
 
     h1 { font-size: $base-font-unit * 4; }
     p {
         font-size: $base-font-unit;
         margin-left: 0; 
+        padding-left: $base-unit * 0.3;
     }
 }

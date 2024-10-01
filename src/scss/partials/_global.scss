@@ -88,3 +88,10 @@ td {
 	font-size: $base-font-unit * 1.2;
 	color: red;
 }
+
+.info_container { text-align: right; }
+
+.close {
+	text-align: right;
+	margin-bottom: $base-unit * 2;
+}

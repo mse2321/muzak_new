@@ -1,8 +1,9 @@
+'use client'
 import React, { useEffect } from 'react';
 import ErrorView from '../ErrorView';
-import Header from '../Header';
 import { useStateContext } from '../../context/state';
 import * as apis from '../../apis/Apis';
+import { Container } from 'react-bootstrap';
 
 const ContentContainer = (props: any) => {
     const { children } = props;
@@ -14,9 +15,10 @@ const ContentContainer = (props: any) => {
 
     return (
         <React.Fragment>
-            <Header />
-            { children }
-            { state.toggleErrorView && <ErrorView />}
+            <Container fluid className="header_container">
+                { children }
+                { state.toggleErrorView && <ErrorView />}
+            </Container>
         </React.Fragment>
     )
 }

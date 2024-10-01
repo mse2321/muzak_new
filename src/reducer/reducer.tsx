@@ -6,6 +6,8 @@ const stateReducer = (state: any, action: IAction) => {
             return { ...state, totalArtists: action.payload };
         case 'set_token':
             return { ...state, token: action.payload };
+        case 'set_search_input':
+            return { ...state, searchInput: action.payload };
         case 'set_songs':
             return { ...state, songs: action.payload };
         case 'set_artist_details':

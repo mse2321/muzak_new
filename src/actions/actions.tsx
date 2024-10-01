@@ -6,6 +6,13 @@ export const setToken = (payload: string) => {
     };
 }
 
+export const setSearchInput = (payload: string) => {
+    return  {
+        type: 'set_search_input', 
+        payload: payload
+    };
+}
+
 export const setTotalArtists = (payload: Array<object>) => {
     return  {
         type: 'set_total_artists', 

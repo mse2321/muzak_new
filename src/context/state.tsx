@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext, createContext, useReducer } from "react";
 import stateReducer from '../reducer/reducer';
 import { IState, IStateReducer } from '../interfaces/';
@@ -9,7 +10,7 @@ const useStateContext = () => useContext(StateContext);
 const StateProvider = ({ children }: any) => {
 
     const initialState: IState = {
-        searchTerm: '',
+        searchInput: '',
         songs: [],
         artistDetails: {},
         currentSong: {},

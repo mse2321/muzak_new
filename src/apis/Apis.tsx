@@ -4,29 +4,41 @@ import * as actions from '../actions/actions';
 import { IState } from '../interfaces';
 import _ from 'lodash';
 
+/*
 const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;
 const apiSecretSpotify = process.env.REACT_APP_APISECRETSPOTIFY;
+const apiClient = process.env.REACT_APP_APICLIENTID;
+*/
+
+const apiKeyDiscogs = "nwEtfaNGEtDqkaSqlVFvYkvfYlTrfogyCmpgHdIl";
+const apiSecretSpotify = "db3745a3c4df441f9827718e30398062";
+const apiClient = "f8b5f1b3eac6480a806bacaec177cc56";
 
 // Spotify APIs
 export const getAuth = async (dispatch: Function) => {
-    const auth = 'Basic ' + apiSecretSpotify;
+    const auth = 'Basic ' + new (Buffer.from as any)(apiClient + ':' + apiSecretSpotify).toString('base64');
 
-    const headers = { 
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': auth
+    const url = 'https://accounts.spotify.com/api/token';
+
+    const authBody = {
+        grant_type: 'client_credentials',
+        json: true
     };
 
-    const url = "https://accounts.spotify.com/api/token";
-    const body = 'grant_type=client_credentials';
+    const headers = { 
+        'Authorization': auth,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
 
     try {
-        const response = await axios.post(url, body, { headers });
+        const response = await axios.post(url, authBody, { headers });
         dispatch(actions.setToken(response.data.access_token));
     } catch (error) {
         dispatch(actions.toggleErrorView(true));
         console.error(error);
     }
 };
+
 
 export const getArtist = async (artistName: String, state: IState, dispatch: Function) => {
     const auth = 'Bearer ' + state.token;
@@ -95,11 +107,31 @@ export const getSongs = async (id: string, state: IState, dispatch: Function) =>
 // Discogs APIs
 const getArtistDetails = async (id: string, dispatch: Function) => {
     const url = "https://api.discogs.com/artists/";
+
     const endPoint = url + id;
 
     try {
         const response = await axios.get(endPoint);
-        dispatch(actions.setArtistDetails(response.data));
+        let data = response.data;
+        const name = data.name;
+        const profile = data.profile;
+        const uri = data.uri;
+        const nameLength = data.name.length;
+        // check for duplicate names
+        const multipleNameResultsCheck = name.endsWith(')'); 
+
+        if(multipleNameResultsCheck) {
+            // this accounts for the ' (number)' tag at the end
+            const reformatedName = name.slice(0, nameLength - 4);
+
+            data = {
+                name: reformatedName,
+                profile: profile,
+                uri: uri
+            }
+        }
+
+        dispatch(actions.setArtistDetails(data));
     } catch (error) {
         dispatch(actions.toggleErrorView(true));
         console.error(error);

@@ -1,5 +1,8 @@
+
+"use client"
 import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../../context/state';
+import Image from 'next/image';
 import * as actions from '../../actions/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
@@ -55,7 +58,7 @@ const AudioPlayer = () => {
     return (
         <div className="audioPlayer_container">
             <div id="audioPlayer">
-                <img className="album_art" src={ state.currentSong?.album?.images[0]?.url } alt="" />
+                <Image className="album_art" src={ state.currentSong?.album?.images[0]?.url } alt="album art" width={300} height={300} />
                 <div id="song_name_display">
                     {
                         playerIssue ? 'Something went wrong. Please try again.' :
