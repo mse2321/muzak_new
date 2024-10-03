@@ -23,7 +23,7 @@ const Profile = () => {
 							{ 'Check out the rest of their profile from Discogs' }
 						</a>
 						</React.Fragment>
-					) : 'The artist could not be found'
+					) : 'Get started by searching for an artist!'
 				}
 			</div>
 		</div>

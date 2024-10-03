@@ -6,7 +6,6 @@ import * as actions from '../../actions/actions';
 
 const InfoButton = () => {
 	const { dispatch } = useStateContext();
-
     const toggleHandler = () => {
         dispatch(actions.toggleSidebar(true));
         dispatch(actions.toggleDisplayNoTracksMessage(false));
