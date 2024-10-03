@@ -11,3 +11,16 @@
 		}
 	}
 }
+
+.clearButton, .input-group button.clearButton {
+	background: white;
+	border-color: white;
+	color: $action;
+	width: $base-unit * 3;
+
+	&:hover { 	
+		background: white;
+		border-color: white; 
+		color: $primary;
+	}
+}

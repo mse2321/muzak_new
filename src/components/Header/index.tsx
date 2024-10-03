@@ -6,7 +6,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Header = () => {
     const { state } = useStateContext();
-
     const heading = 'Muzak';
     const introMessage1 = 'Listen to available preview tracks from your favorite artists using ';
     const introMessage2 = ' and artist information from ';
@@ -26,9 +25,7 @@ const Header = () => {
                             </p>
                         </Col>
                         <Col className="info_container">
-                            {
-                                state.songs.length > 0 && <InfoButton />
-                            }
+                            <InfoButton />
                         </Col>
                     </Row>
                 </Container>
