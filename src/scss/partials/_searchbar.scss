@@ -1,11 +1,13 @@
 #search_form { 
-	margin-bottom: $base-unit * 3; 
-	width: $base-unit * 27.5;
+	width: $base-unit * 35;
+	z-index: 100;
 }
 .input-group { 
 	button {
 		width: $base-unit * 6;
 		border-radius: 0 $base-unit * 0.5 $base-unit * 0.5 0; 
+		color: black;
+
 		span {
 			font-size: $base-font-unit * 2;
 		}
@@ -17,10 +19,34 @@
 	border-color: white;
 	color: $action;
 	width: $base-unit * 3;
+	padding: 0;
 
 	&:hover { 	
 		background: white;
 		border-color: white; 
 		color: $primary;
 	}
+}
+
+.search_auto_complete {
+	background-color: $white;
+	color: $black;
+	font-size: $base-font-unit;
+	max-width: $base-unit * 26;
+	position: relative;
+	margin-top: $base-unit * -0.3;
+	padding-top: $base-unit * 0.3;
+	z-index: 0;
+
+	li {
+		color: $black;
+		padding: 0 0.8rem;
+		cursor: pointer; 
+		&:hover { 
+			background-color: $action; 
+			color: $white;
+		}
+	}
+
+	li:first-child { background-color: #c2c2c2;  }
 }

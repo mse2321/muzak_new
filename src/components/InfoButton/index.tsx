@@ -13,7 +13,7 @@ const InfoButton = () => {
     }
 
     return (
-        <button className="info">
+        <button className="info" aria-label="information button">
             <FontAwesomeIcon type="button" icon={faInfoCircle} onClick={() => toggleHandler()} />
 		</button>
     );

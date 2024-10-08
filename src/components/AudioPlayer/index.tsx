@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../../context/state';
 import Image from 'next/image';
+import InfoButton from '../InfoButton';
 import * as actions from '../../actions/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
@@ -94,6 +95,7 @@ const AudioPlayer = () => {
                             role="button"
                             className={activeButton === 'next_song' ? 'active_player_button' : ''} 
                             onClick={() => nextSong('next_song')} />
+                        <InfoButton />
                     </div>
                 </div>
                 <button id="mobile_back" onClick={hidePlayer}>

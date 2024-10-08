@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import InfoButton from '../InfoButton';
 import { useStateContext } from '../../context/state';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -14,18 +13,15 @@ const Header = () => {
 
     return <header>
                 <Container fluid className="header_container">
-                    <Row className="flex-column-reverse">
-                        <Col xs={12} md={10} lg={10} xl={10} className="heading_container">
+                    <Row>
+                        <Col className="heading_container">
                             <h1>{heading}</h1>
                             <p>
                                 {introMessage1}
-                                <a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer">{spotify}</a>
+                                <a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer" className="links">{spotify}</a>
                                 {introMessage2}
-                                <a href="https://www.discogs.com/" target="_blank" rel="noopener noreferrer">{discogs}</a>.
+                                <a href="https://www.discogs.com/" target="_blank" rel="noopener noreferrer" className="links">{discogs}</a>.
                             </p>
-                        </Col>
-                        <Col className="info_container">
-                            <InfoButton />
                         </Col>
                     </Row>
                 </Container>

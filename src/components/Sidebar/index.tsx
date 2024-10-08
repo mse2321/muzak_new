@@ -22,7 +22,7 @@ const Sidebar = () => {
                         <Button onClick={() => closeNoTrackMessageHandler()}>X</Button>
                     </div>
                     Sorry cannot find preview tracks available for this artist right now.
-                    Please try again, check out their profile or select a new artist.
+                    Please try again and select a new artist.
                 </div>
             }
             { state.toggleProfile && <Profile /> }

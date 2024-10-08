@@ -8,7 +8,7 @@
 
     svg {
         @extend %reset;
-        font-size: $base-font-unit * 3;
+        font-size: $base-font-unit * 2;
         color: $action;
 
         &:hover { color: $primary; }

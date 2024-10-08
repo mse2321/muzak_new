@@ -19,7 +19,7 @@ const Profile = () => {
 					!_.isEmpty(state.artistDetails) ? (<React.Fragment>
 						<h3>{ state.artistDetails?.name }</h3>
 						<p>{ state.artistDetails?.profile}</p>
-						<a href={state.artistDetails?.uri} target="_blank" rel="noreferrer">
+						<a href={state.artistDetails?.uri} target="_blank" rel="noreferrer" className="links">
 							{ 'Check out the rest of their profile from Discogs' }
 						</a>
 						</React.Fragment>

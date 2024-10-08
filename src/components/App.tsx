@@ -24,6 +24,8 @@ const App = () => {
                         <Col className="sidebar_container" xs={12} md={5} lg={5} xl={5}>
                             <Sidebar />
                         </Col>
+                    </Row>
+                    <Row>
                         <Footer />
                     </Row>
                 </Container>

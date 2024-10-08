@@ -1,7 +1,6 @@
 "use client"
 
 import React, { Suspense } from 'react';
-import SearchResults from '../SearchResults';
 import SongList from '../SongList';
 import { useStateContext } from '../../context/state';
 import _ from 'lodash';
@@ -12,13 +11,7 @@ const SearchResultsContainer = () => {
     const { state } = useStateContext();
 
     return (
-        <section className="searchContainer">
-            {
-                state.toggleSearchResultsView && 
-                <Suspense fallback={<Skeleton count={10} />}>
-                    <SearchResults />
-                </Suspense>
-            }
+        <section className="song_search_container">
             {
                 !_.isEmpty(state.songs) && 
                 <Suspense fallback={<Skeleton count={10} />}>
