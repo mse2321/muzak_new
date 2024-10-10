@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { CurrentSong } from '../interfaces';
-import * as actions from '../actions/actions';
-import { IState } from '../interfaces';
+import { CurrentSong } from '../lib';
+import * as actions from '../ui/redux/actions/actions';
+import { IState } from '../lib';
 import _ from 'lodash';
 
 const apiKeyDiscogs = process.env.REACT_APP_APIKEYDISCOGS;

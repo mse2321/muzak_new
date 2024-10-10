@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import "../scss/style.scss";
+import "./ui/scss/style.scss";
+import { StateProvider } from './ui/redux/state';
 
 export const metadata: Metadata = {
   title: 'Muzak: Music The Easy Way',
@@ -13,7 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+          <main>
+            <StateProvider>
+              {children}
+            </StateProvider>
+          </main>
+      </body>
     </html>
   )
 }
