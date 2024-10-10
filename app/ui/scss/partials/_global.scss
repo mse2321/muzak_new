@@ -4,9 +4,8 @@
 	box-sizing: border-box;
 }
 
-.main_container { min-height: 100vh; }
-
-a, a:active, a:focus, a:hover { text-decoration: none; }
+.main_container 				{ min-height: 100vh; }
+a, a:active, a:focus, a:hover 	{ text-decoration: none; }
 
 body { 
 	font-family: $font-family-body; 
@@ -47,9 +46,7 @@ a, .search_auto_complete li {
 
 header,
 section { margin-bottom: $base-unit * 4; }
-
 form 	{ display: table; }
-
 .hidden { visibility: hidden; }
 
 .content_wrap { 
