@@ -1,6 +1,6 @@
 "use client"
 import React, { Suspense } from 'react';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

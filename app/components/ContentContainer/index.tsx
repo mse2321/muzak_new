@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect } from 'react';
 import ErrorView from '../ErrorView';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import * as apis from '../../apis/Apis';
 import { Container } from 'react-bootstrap';
 

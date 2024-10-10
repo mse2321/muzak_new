@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../actions/actions';

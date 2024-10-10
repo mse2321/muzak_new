@@ -1,7 +1,7 @@
 
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import Image from 'next/image';
 import InfoButton from '../InfoButton';
 import * as actions from '../../actions/actions';

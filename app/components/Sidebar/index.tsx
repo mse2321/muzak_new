@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import AudioPlayer from '../AudioPlayer';
 import Profile from '../Profile';
 import { Button } from 'react-bootstrap';
@@ -14,7 +14,7 @@ const Sidebar = () => {
 	}
 
     return (
-        <aside id="album_player_section" className={state.toggleSidebar ? '' : 'hidden'}>
+        <aside id="album_player_section">
             { 
                 state.currentSong?.preview_url ? state.togglePlayer && <AudioPlayer /> :
                 <div className={"no_tracks" + (!state.displayNoTracksMessage ? ' hidden' : '')}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import CloseButton from '../CloseButton';
 import _ from 'lodash';
 import * as actions from '../../actions/actions';

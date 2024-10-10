@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react';
 import SongList from '../SongList';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import _ from 'lodash';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

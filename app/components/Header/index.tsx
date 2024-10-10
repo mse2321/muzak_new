@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { useStateContext } from '../../context/state';
+import { useStateContext } from '../../../context/state';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Header = () => {

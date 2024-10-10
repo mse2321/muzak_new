@@ -1,4 +1,4 @@
-import { IAction } from '../interfaces/';
+import { IAction } from '../interfaces';
 
 const stateReducer = (state: any, action: IAction) => {
     switch (action.type) {

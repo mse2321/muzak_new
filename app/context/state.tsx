@@ -1,7 +1,7 @@
 "use client"
 import React, { useContext, createContext, useReducer } from "react";
 import stateReducer from '../reducer/reducer';
-import { IState, IStateReducer } from '../interfaces/';
+import { IState, IStateReducer } from '../interfaces';
 
 const StateContext = createContext<IStateReducer>({} as IStateReducer);
 
