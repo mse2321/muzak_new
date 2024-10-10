@@ -4,6 +4,8 @@
 	box-sizing: border-box;
 }
 
+.main_container { min-height: 100vh; }
+
 a, a:active, a:focus, a:hover { text-decoration: none; }
 
 body { 
@@ -50,10 +52,9 @@ form 	{ display: table; }
 
 .hidden { visibility: hidden; }
 
-#content_wrap { 
+.content_wrap { 
 	padding: 0 2em; 
-	z-index: 500; 
-	min-height: 95vh;
+	z-index: 500;
 }
 
 small { color: #bbb; }

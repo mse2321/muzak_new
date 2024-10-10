@@ -1,3 +1,4 @@
+'use client'
 import { useEffect } from 'react';
 import ContentContainer from './ui/components/ContentContainer';
 import SearchBar from './ui/components/SearchBar';
@@ -19,27 +20,27 @@ export default function Home() {
   }, [dispatch])
 
   return (
-    <Container fluid>
+    <Container fluid className="main_container">
       <Row className="content_wrap">
         <Col>
-          <Header />
-        </Col>
-      </Row>
-      <Row className="content_wrap">
-          <Col xs={12} md={12} lg={7} xl={7}>
-              <SearchBar />
-              <ContentContainer>
-                  <SearchResultsContainer />
-              </ContentContainer>
-          </Col>
-          <Col className="sidebar_container" xs={12} md={12} lg={5} xl={5}>
-            {
-              !_.isEmpty(state.songs) && <Sidebar />
-            }
-          </Col>
-      </Row>
-      <Row className="content_wrap">
-        <Col>
+          <Row>
+            <Col>
+              <Header />
+            </Col>
+          </Row>
+          <Row>
+              <Col xs={12} md={12} lg={7} xl={7}>
+                  <SearchBar />
+                  <ContentContainer>
+                      <SearchResultsContainer />
+                  </ContentContainer>
+              </Col>
+              <Col className="sidebar_container" xs={12} md={12} lg={5} xl={5}>
+                {
+                  !_.isEmpty(state.songs) && <Sidebar />
+                }
+              </Col>
+          </Row>
           <Footer />
         </Col>
       </Row>

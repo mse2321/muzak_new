@@ -58,8 +58,6 @@
 }
 
 @media (max-width: 768px) {
-	#content_wrap 		{ padding: $base-unit * 2 $base-unit * 2 $base-unit $base-unit * 2; }
-	
 	section 			{ margin-bottom: 0; }
 
 	tr, 
@@ -132,7 +130,7 @@
 		}
 	}
 
-	header { padding: 0;}
+	header { padding: 0; }
 
 	footer {
 		position: relative;
